@@ -1,12 +1,11 @@
 <template>
   <footer class="mt-16 text-center">
-    <p>
+    <p class="text-sm text-black">
       Created by
-      <a class="text-blue-500 font-medium" href="https://github.com/Biotea92" target="_blank" >Woojong SeonYoung</a>
+      <a class="text-gray-500" href="https://github.com/WoojongSeonyoung/2024-wedding-invitation" target="_blank" >
+        우종 & 선영
+        <img src="@/assets/icon/github-mark.svg" alt="icon" class="inline h-4 w-4">
+      </a>
     </p>
-    <small>
-      Made with <i class="fa fa-heart text-pink-500"></i>
-      and a cup of <i class="fas fa-mug-hot text-red-600"></i>
-    </small>
   </footer>
 </template>

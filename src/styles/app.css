@@ -2,18 +2,35 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Noto+Serif+KR:wght@300&display=swap');
 
 * {
     font-family: 'Poppins', sans-serif;
 }
 
+.noto-sans-kr-footer {
+   font-family: "Noto Sans KR", sans-serif;
+   font-optical-sizing: auto;
+   font-weight: 500;
+   font-style: normal;
+}
 
-/* <uniquifier>: Use a unique and descriptive class name*/
-/* <weight>: Use a value from 100 to 900*/
+.noto-serif-kr-regular {
+    font-family: "Noto Serif KR", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
 
-/*.noto-sans-kr-<uniquifier> {*/
-/*   font-family: "Noto Sans KR", sans-serif;*/
-/*   font-optical-sizing: auto;*/
-/*   font-weight: <weight>;*/
-/*   font-style: normal;*/
-/*}*/
+.noto-serif-kr-large {
+    font-family: "Noto Serif KR", serif;
+    font-optical-sizing: auto;
+    font-weight: 900;
+    font-style: normal;
+}
+
+.gowun-dodum-regular {
+    font-family: "Gowun Dodum", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
