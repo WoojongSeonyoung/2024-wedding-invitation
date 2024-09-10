@@ -13,6 +13,7 @@ const naverMapUrl = 'https://map.naver.com/p/entry/place/38252791?placePath=%252
 const kakaoMapUrl = 'https://kko.to/_eeUjwVwl3';
 const tMapUrl = 'https://tmap.life/8e0e16ba';
 const googleMapUrl = 'https://maps.app.goo.gl/tX3MWwJajaQB7FZT8';
+
 const openUrl = (url) => {
   window.open(url, '_blank');
 };
@@ -48,7 +49,7 @@ const openInfo = () => {
     <section class="flex justify-center space-x-6 mt-6">
       <!-- 네이버 지도 아이콘 -->
       <div class="iconTextWrapper">
-        <img src="@/assets/icon/github-mark.svg" @click="openUrl(naverMapUrl)" class="appIcon" alt="Naver Map">
+        <img src="@/assets/icon/naverMap.jpeg" @click="openUrl(naverMapUrl)" class="appIcon" alt="Naver Map">
         <p class="appText">
           네이버
         </p>
@@ -56,7 +57,7 @@ const openInfo = () => {
 
       <!-- 카카오 맵 아이콘 -->
       <div class="iconTextWrapper">
-        <img src="@/assets/icon/github-mark.svg" @click="openUrl(kakaoMapUrl)" class="appIcon" alt="Kakao Map">
+        <img src="@/assets/icon/kakaoMap.png" @click="openUrl(kakaoMapUrl)" class="appIcon" alt="Kakao Map">
         <p class="appText">
           카카오맵
         </p>
@@ -64,7 +65,7 @@ const openInfo = () => {
 
       <!-- T맵 아이콘 -->
       <div class="iconTextWrapper">
-        <img src="@/assets/icon/github-mark.svg" @click="openUrl(tMapUrl)" class="appIcon" alt="TMap">
+        <img src="@/assets/icon/TMAP.svg" @click="openUrl(tMapUrl)" class="appIcon" alt="TMap">
         <p class="appText">
           T맵
         </p>
@@ -72,7 +73,7 @@ const openInfo = () => {
 
       <!-- 구글 지도 아이콘 -->
       <div class="iconTextWrapper">
-        <img src="@/assets/icon/github-mark.svg" @click="openUrl(googleMapUrl)" class="appIcon" alt="Google Map">
+        <img src="@/assets/icon/googleMap.png" @click="openUrl(googleMapUrl)" class="appIcon" alt="Google Map">
         <p class="appText">
           구글맵
         </p>
@@ -90,7 +91,7 @@ const openInfo = () => {
   }
 
   .appIcon {
-    @apply w-8 h-8 cursor-pointer;
+    @apply w-10 h-10 cursor-pointer;
   }
 }
 </style>
