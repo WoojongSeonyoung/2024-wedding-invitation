@@ -10,7 +10,9 @@
     "deploy": "vite build && gh-pages -d dist"
   },
   "dependencies": {
-    "vue": "^3.4.37"
+    "vue": "^3.4.37",
+    "vue-router": "^4.4.3",
+    "vue3-kakao-maps": "^2.3.9"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.1.2",
