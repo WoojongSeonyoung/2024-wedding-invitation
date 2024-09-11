@@ -1,7 +1,6 @@
 <script setup>
 import {KakaoMap, KakaoMapMarker} from 'vue3-kakao-maps';
 import {ref} from "vue";
-import SubTitle from "@/components/SubTitle.vue";
 
 // 충주컨벤션센터 웨딩홀 좌표
 const coordinate = {

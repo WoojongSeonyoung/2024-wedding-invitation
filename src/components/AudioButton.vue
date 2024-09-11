@@ -1,14 +1,8 @@
 <script setup>
-import {onMounted, onUpdated, ref} from "vue";
+import {ref} from "vue";
 import {MusicalNoteIcon} from "@heroicons/vue/24/outline/index.js";
 
 const audioPlayer = ref(null);
-onMounted(() => {
-  audioPlayer.value = new Audio("https://firebasestorage.googleapis.com/v0/b/snsapp-ea7c8.appspot.com/o/audio%2Fwedding-music-182505.mp3?alt=media&token=04ad9b25-2bca-426a-b147-252cd5f4fd7c");
-  audioPlayer.value.loop = true;
-  audioPlayer.value.volume = 0.25;
-});
-
 const isPlaying = ref(false);
 
 const toggleMusic = () => {
@@ -20,6 +14,12 @@ const toggleMusic = () => {
       audioPlayer.value.play();
       isPlaying.value = true;
     }
+  } else {
+    audioPlayer.value = new Audio("https://firebasestorage.googleapis.com/v0/b/snsapp-ea7c8.appspot.com/o/audio%2Fwedding-music-182505.mp3?alt=media&token=04ad9b25-2bca-426a-b147-252cd5f4fd7c");
+    audioPlayer.value.loop = true;
+    audioPlayer.value.volume = 0.25;
+    audioPlayer.value.play();
+    isPlaying.value = true;
   }
 };
 </script>

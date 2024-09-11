@@ -17,5 +17,5 @@
 </style>
 
 <script setup lang="ts">
-import AudioButton from "@/components/AudioButton.vue";
+import AudioButton from '@/components/AudioButton.vue';
 </script>
