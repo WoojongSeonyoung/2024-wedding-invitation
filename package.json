@@ -13,6 +13,7 @@
   "dependencies": {
     "@eslint/js": "^9.10.0",
     "@heroicons/vue": "^2.1.5",
+    "gsap": "^3.12.5",
     "vue": "^3.4.37",
     "vue-eslint-parser": "^9.4.3",
     "vue-router": "^4.4.3",
