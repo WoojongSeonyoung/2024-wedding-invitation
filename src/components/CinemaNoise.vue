@@ -21,7 +21,7 @@ onMounted(() => {
   // 컴포넌트가 렌더링된 후 5초 후에 fadeout을 실행
   setTimeout(() => {
     showCinemaEffect.value = false;
-  }, 3000); // 5초 후에 fadeout (원하는 시간으로 조절 가능)
+  }, 5000); // 5초 후에 fadeout (원하는 시간으로 조절 가능)
 });
 </script>
 
@@ -39,7 +39,8 @@ onMounted(() => {
 .background {
   width: 100%;
   height: 100%;
-  background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/662025/abstract.jpg');
+  background-image: url('@/assets/abstract.jpg');
+  //background: antiquewhite;
   background-size: cover;
 }
 
@@ -61,7 +62,7 @@ onMounted(() => {
   left: 0;
   padding-left: 100px;
   opacity: .08;
-  background: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/662025/scratch.png') repeat center center;
+  background: url('@/assets/scratch.png') repeat center center;
   animation: scratch 0.45s steps(1) infinite;
 }
 
@@ -78,7 +79,7 @@ onMounted(() => {
   top: -5%;
   left: -5%;
   opacity: .11;
-  background: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/662025/grain.jpg') repeat center center;
+  background: url('@/assets/grain.jpg') repeat center center;
   animation: grain 0.5s steps(1) infinite;
 }
 
