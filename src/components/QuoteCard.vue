@@ -11,7 +11,7 @@ const formatContent = (text) => {
 </script>
 
 <template>
-  <div class="bg-yellow-50 p-6 rounded-lg shadow-lg max-w-md mx-auto mt-4">
+  <div class="bg-rose-50 p-6 rounded-lg shadow-lg max-w-md mx-auto mt-4">
     <h2 class="noto-sans-kr-regular text-xl text-gray-900 font-bold mb-2 overflow-hidden text-ellipsis whitespace-nowrap">
       {{ title }}
     </h2>

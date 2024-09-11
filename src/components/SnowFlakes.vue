@@ -55,25 +55,17 @@
 
 /* 눈송이 반짝임 효과 */
 @keyframes twinkle {
-  0% {
+  0%, 50%, 100% {
     opacity: 1;
     filter: brightness(1.2);
   }
-  25% {
+  12.5%, 37.5%, 62.5%, 87.5% {
     opacity: 1;
     filter: brightness(2);
   }
-  50% {
+  25%, 75% {
     opacity: 1;
-    filter: brightness(1.2);
-  }
-  75% {
-    opacity: 1;
-    filter: brightness(2);
-  }
-  100% {
-    opacity: 1;
-    filter: brightness(1.2);
+    filter: brightness(3);
   }
 }
 </style>

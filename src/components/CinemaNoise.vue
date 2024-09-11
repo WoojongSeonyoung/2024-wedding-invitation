@@ -4,7 +4,7 @@
       <div class="inner-scratch">
         <div class="background grain"></div>
         <h1>
-<!--          <span>안녕하세요.</span>-->
+          <span>안녕하세요.</span>
         </h1>
       </div>
     </div>

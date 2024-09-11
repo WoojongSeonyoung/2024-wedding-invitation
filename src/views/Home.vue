@@ -1,9 +1,21 @@
+<template>
+  <main>
+    <DdayTitle date="2024-11-16"/>
+    <Divider />
+    <SubTitle message="오시는 길" />
+    <KakaoMap />
+    <QuoteCard v-for="card in cards" :title="card.title" :content="card.content" />
+    <Footer />
+  </main>
+</template>
+
 <script setup>
 import Footer from '@/components/Footer.vue';
 import KakaoMap from '@/components/KakaoMap.vue';
 import SubTitle from '@/components/SubTitle.vue';
 import Divider from '@/components/Divider.vue';
 import QuoteCard from '@/components/QuoteCard.vue';
+import DdayTitle from '@/components/DdayTitle.vue';
 
 const cards = [
   {
@@ -29,16 +41,6 @@ const cards = [
 ]
 
 </script>
-
-<template>
-  <main>
-    <Divider />
-    <SubTitle message="오시는 길" />
-    <KakaoMap />
-    <QuoteCard v-for="card in cards" :title="card.title" :content="card.content" />
-    <Footer />
-  </main>
-</template>
 
 <style scoped lang="postcss">
 
