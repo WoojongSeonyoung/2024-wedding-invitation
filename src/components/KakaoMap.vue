@@ -8,19 +8,33 @@ const coordinate = {
   lng: 127.93678102637263
 };
 
-const naverMapUrl = 'https://map.naver.com/p/entry/place/38252791?placePath=%252Fhome%253Fentry%253Dplt&searchType=place&lng=127.9367989&lat=36.9768350&c=15.00,0,0,0,dh';
-const kakaoMapUrl = 'https://kko.to/_eeUjwVwl3';
-const tMapUrl = 'https://tmap.life/8e0e16ba';
-const googleMapUrl = 'https://maps.app.goo.gl/tX3MWwJajaQB7FZT8';
-
-const openUrl = (url) => {
-  window.open(url, '_blank');
-};
-
+const mapLinks = [
+  {
+    fileName: 'naverMap.jpeg',
+    url: 'https://map.naver.com/p/entry/place/38252791?placePath=%252Fhome%253Fentry%253Dplt&searchType=place&lng=127.9367989&lat=36.9768350&c=15.00,0,0,0,dh',
+    koName: '네이버'
+  },
+  {
+    fileName: 'kakaoMap.png',
+    url: 'https://kko.to/_eeUjwVwl3',
+    koName: '카카오맵'
+  },
+  {
+    fileName: 'TMAP.svg',
+    url: 'https://tmap.life/8e0e16ba',
+    koName: 'T맵'
+  },
+  {
+    fileName: 'googleMap.png',
+    url: 'https://maps.app.goo.gl/tX3MWwJajaQB7FZT8',
+    koName: '구글맵'
+  }
+];
+const images = import.meta.glob('../assets/icon/*.{jpeg,png,svg}', { eager: true });
+const getSrc = (fileName) => images[`../assets/icon/${fileName}`]?.default || '';
+const openUrl = (url) => window.open(url, '_blank');
 const visibleRef = ref(false);
-const openInfo = () => {
-  visibleRef.value = !visibleRef.value;
-};
+const toggleInfo = () => (visibleRef.value = !visibleRef.value);
 </script>
 
 <template>
@@ -40,42 +54,15 @@ const openInfo = () => {
             :lng="coordinate.lng"
             :clickable="true"
             :infoWindow="{ content: '충주컨벤션 웨딩홀', visible: visibleRef }"
-            @onClickKakaoMapMarker="openInfo"
+            @onClickKakaoMapMarker="toggleInfo"
         >
         </KakaoMapMarker>
       </KakaoMap>
     </section>
     <section class="flex justify-center space-x-6 mt-6">
-      <!-- 네이버 지도 아이콘 -->
-      <div class="iconTextWrapper">
-        <img src="@/assets/icon/naverMap.jpeg" @click="openUrl(naverMapUrl)" class="appIcon" alt="Naver Map">
-        <p class="appText">
-          네이버
-        </p>
-      </div>
-
-      <!-- 카카오 맵 아이콘 -->
-      <div class="iconTextWrapper">
-        <img src="@/assets/icon/kakaoMap.png" @click="openUrl(kakaoMapUrl)" class="appIcon" alt="Kakao Map">
-        <p class="appText">
-          카카오맵
-        </p>
-      </div>
-
-      <!-- T맵 아이콘 -->
-      <div class="iconTextWrapper">
-        <img src="@/assets/icon/TMAP.svg" @click="openUrl(tMapUrl)" class="appIcon" alt="TMap">
-        <p class="appText">
-          T맵
-        </p>
-      </div>
-
-      <!-- 구글 지도 아이콘 -->
-      <div class="iconTextWrapper">
-        <img src="@/assets/icon/googleMap.png" @click="openUrl(googleMapUrl)" class="appIcon" alt="Google Map">
-        <p class="appText">
-          구글맵
-        </p>
+      <div v-for="map in mapLinks" :key="map.fileName" class="iconTextWrapper">
+        <img :src="getSrc(map.fileName)" @click="openUrl(map.url)" class="appIcon" :alt="map.fileName" />
+        <p class="appText">{{ map.koName }}</p>
       </div>
     </section>
   </main>
