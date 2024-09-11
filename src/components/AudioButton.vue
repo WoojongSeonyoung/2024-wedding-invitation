@@ -25,7 +25,7 @@ const toggleMusic = () => {
 </script>
 
 <template>
-  <button @click="toggleMusic" class="fixed bottom-4 left-4 p-4 rounded-full">
+  <button @click="toggleMusic" class="fixed top-2 right-2 p-4 rounded-full">
     <MusicalNoteIcon :class="isPlaying ? 'text-pink-200' : 'text-gray-400'" class="w-6 h-6"/>
   </button>
 </template>

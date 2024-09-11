@@ -11,11 +11,11 @@ const formatContent = (text) => {
 </script>
 
 <template>
-  <div class="bg-rose-50 p-6 rounded-lg shadow-lg max-w-md mx-auto mt-4">
-    <h2 class="noto-sans-kr-regular text-xl text-gray-900 font-bold mb-2 overflow-hidden text-ellipsis whitespace-nowrap">
+  <div class="bg-gray-50 p-5 rounded-lg shadow-lg max-w-md mx-auto mt-4">
+    <h2 class="noto-sans-kr-regular text-lg text-gray-950 font-bold mb-2 overflow-hidden text-ellipsis whitespace-nowrap">
       {{ title }}
     </h2>
-    <p class="noto-sans-kr-regular text-md text-gray-600" v-html="formatContent(content)">
+    <p class="noto-sans-kr-regular text-sm text-gray-800" v-html="formatContent(content)">
     </p>
   </div>
 </template>

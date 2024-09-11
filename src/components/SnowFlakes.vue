@@ -42,14 +42,22 @@
 .snowflake:nth-child(7) { left: 70%; animation-duration: 10s; animation-delay: 4s; }
 .snowflake:nth-child(8) { left: 80%; animation-duration: 12s; animation-delay: 7s; }
 .snowflake:nth-child(9) { left: 90%; animation-duration: 10s; animation-delay: 2s; }
-.snowflake:nth-child(10) { left: 15%; animation-duration: 11s; animation-delay: 9s; }
+.snowflake:nth-child(10) { left: 15%; animation-duration: 11s; animation-delay: 10s; }
+.snowflake:nth-child(11) { left: 25%; animation-duration: 10s; animation-delay: 9s; }
+.snowflake:nth-child(12) { left: 35%; animation-duration: 12s; animation-delay: 2s; }
+.snowflake:nth-child(13) { left: 45%; animation-duration: 11s; animation-delay: 7s; }
+.snowflake:nth-child(14) { left: 55%; animation-duration: 10s; animation-delay: 4s; }
+.snowflake:nth-child(15) { left: 65%; animation-duration: 11s; animation-delay: 5s; }
+.snowflake:nth-child(16) { left: 75%; animation-duration: 10s; animation-delay: 6s; }
+.snowflake:nth-child(17) { left: 85%; animation-duration: 12s; animation-delay: 3s; }
+.snowflake:nth-child(18) { left: 95%; animation-duration: 10s; animation-delay: 8s; }
 /* 눈송이가 문서 전체를 기준으로 아래로 떨어지도록 조정 */
 @keyframes fall {
   0% {
     transform: translateY(-100px) rotate(0deg);
   }
   100% {
-    transform: translateY(200vh) rotate(360deg);
+    transform: translateY(200vh) rotate(720deg);
   }
 }
 
