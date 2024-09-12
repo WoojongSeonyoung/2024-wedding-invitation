@@ -1,6 +1,6 @@
 <template>
   <main>
-<!--    <DdayCalculator date="2024-11-16"/>-->
+    <Calendar />
     <Divider />
     <SubTitle message="오시는 길" />
     <KakaoMap />
@@ -15,7 +15,7 @@ import KakaoMap from '@/components/KakaoMap.vue';
 import SubTitle from '@/components/SubTitle.vue';
 import Divider from '@/components/Divider.vue';
 import QuoteCard from '@/components/QuoteCard.vue';
-import DdayCalculator from '@/components/DdayCalculator.vue';
+import Calendar from '@/components/Calendar.vue';
 
 const cards = [
   {
