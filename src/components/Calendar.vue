@@ -14,6 +14,8 @@
         :disabled-dates="disabledDates"
         :on-year-change="resetDate"
         :on-month-change="resetDate"
+        :format-locale="ko"
+        format="E"
         week-start="0"
         prevent-min-max-navigation
         inline
@@ -45,6 +47,7 @@
 import VueDatePicker from '@vuepic/vue-datepicker';
 import '@vuepic/vue-datepicker/dist/main.css';
 import DdayCalculator from '@/components/DdayCalculator.vue';
+import { ko } from 'date-fns/locale';
 
 const minMaxDate = new Date('2024-11-16');
 const minMaxTime = new Date('2024-11-16 11:00:00');
