@@ -1,5 +1,6 @@
 <template>
   <main>
+    <Gallery />
     <Divider />
     <Calendar />
     <Divider />
@@ -17,6 +18,7 @@ import SubTitle from '@/components/SubTitle.vue';
 import Divider from '@/components/Divider.vue';
 import QuoteCard from '@/components/QuoteCard.vue';
 import Calendar from '@/components/Calendar.vue';
+import Gallery from '@/components/Gallery.vue';
 
 const cards = [
   {
