@@ -1,22 +1,22 @@
 <template>
   <span class="text-rose-400">
     {{ tweened.number.toFixed(0) }}
-<!--    🤵🏻 👰🏻‍♀️-->
+    <!--    🤵🏻 👰🏻‍♀️-->
   </span>
 </template>
 
 <script setup>
-import {ref, onMounted, reactive, watch} from 'vue';
-import gsap from 'gsap'
+import { ref, onMounted, reactive, watch } from 'vue';
+import gsap from 'gsap';
 
 let props = defineProps({
   date: String,
 });
 
-const number = ref(0)
+const number = ref(0);
 const tweened = reactive({
-  number: 0
-})
+  number: 0,
+});
 
 onMounted(() => {
   // 5초 대기 후 setDday 실행
@@ -42,11 +42,11 @@ const setDday = () => {
   } else {
     number.value = Math.abs(diffDays); // 목표일이 지나간 경우
   }
-}
+};
 
 watch(number, (n) => {
-  gsap.to(tweened, { duration: 3, number: Number(n) || 0 })
-})
+  gsap.to(tweened, { duration: 3, number: Number(n) || 0 });
+});
 
 </script>
 

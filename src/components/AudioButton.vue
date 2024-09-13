@@ -1,6 +1,12 @@
+<template>
+  <button @click="toggleMusic" class="fixed top-2 right-2 p-4 rounded-full">
+    <MusicalNoteIcon :class="isPlaying ? 'text-pink-200' : 'text-gray-400'" class="w-6 h-6" />
+  </button>
+</template>
+
 <script setup>
-import {ref} from "vue";
-import {MusicalNoteIcon} from "@heroicons/vue/24/outline/index.js";
+import { ref } from 'vue';
+import { MusicalNoteIcon } from '@heroicons/vue/24/outline/index.js';
 
 const audioPlayer = ref(null);
 const isPlaying = ref(false);
@@ -15,7 +21,7 @@ const toggleMusic = () => {
       isPlaying.value = true;
     }
   } else {
-    audioPlayer.value = new Audio("https://firebasestorage.googleapis.com/v0/b/snsapp-ea7c8.appspot.com/o/audio%2Fwedding-music-182505.mp3?alt=media&token=04ad9b25-2bca-426a-b147-252cd5f4fd7c");
+    audioPlayer.value = new Audio('https://firebasestorage.googleapis.com/v0/b/snsapp-ea7c8.appspot.com/o/audio%2Fwedding-music-182505.mp3?alt=media&token=04ad9b25-2bca-426a-b147-252cd5f4fd7c');
     audioPlayer.value.loop = true;
     audioPlayer.value.volume = 0.25;
     audioPlayer.value.play();
@@ -23,9 +29,3 @@ const toggleMusic = () => {
   }
 };
 </script>
-
-<template>
-  <button @click="toggleMusic" class="fixed top-2 right-2 p-4 rounded-full">
-    <MusicalNoteIcon :class="isPlaying ? 'text-pink-200' : 'text-gray-400'" class="w-6 h-6"/>
-  </button>
-</template>

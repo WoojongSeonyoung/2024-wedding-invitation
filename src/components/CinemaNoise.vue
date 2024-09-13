@@ -32,7 +32,9 @@ onMounted(() => {
 .fade-enter-active, .fade-leave-active {
   transition: opacity 1s ease;
 }
-.fade-enter, .fade-leave-to /* .fade-leave-active의 별칭 */ {
+
+.fade-enter, .fade-leave-to /* .fade-leave-active의 별칭 */
+{
   opacity: 0;
 }
 
