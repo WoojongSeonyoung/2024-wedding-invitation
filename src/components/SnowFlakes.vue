@@ -163,7 +163,7 @@
   }
   25%, 75% {
     opacity: 1;
-    filter: brightness(3);
+    filter: brightness(1.6);
   }
 }
 </style>

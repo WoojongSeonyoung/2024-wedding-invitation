@@ -1,5 +1,6 @@
 <template>
   <main>
+    <Divider />
     <Calendar />
     <Divider />
     <SubTitle message="오시는 길" />
