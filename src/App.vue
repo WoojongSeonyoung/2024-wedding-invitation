@@ -2,7 +2,7 @@
   <div class="outer">
     <main class="app relative">
       <CinemaNoise />
-      <SnowFlakes />
+      <SnowFlakes icon="favorite" />
       <router-view></router-view>
       <AudioButton />
     </main>

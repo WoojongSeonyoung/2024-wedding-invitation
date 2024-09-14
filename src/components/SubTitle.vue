@@ -1,5 +1,5 @@
 <template>
-  <section class="text-center">
+  <section class="text-center my-4">
     <p class="text-xl text-black noto-serif-kr-large">
       {{ message }}
     </p>

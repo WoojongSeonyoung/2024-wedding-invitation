@@ -1,13 +1,14 @@
 <template>
   <main>
-    <Gallery />
-    <Divider />
-    <Calendar />
-    <Divider />
-    <SubTitle message="오시는 길" />
-    <KakaoMap />
-    <QuoteCard v-for="card in cards" :title="card.title" :content="card.content" />
-    <Footer />
+    <SubTitle message="갤러리"/>
+    <Gallery/>
+    <Divider/>
+    <Calendar/>
+    <Divider/>
+    <SubTitle message="오시는 길"/>
+    <KakaoMap/>
+    <QuoteCard v-for="card in cards" :title="card.title" :content="card.content"/>
+    <Footer/>
   </main>
 </template>
 

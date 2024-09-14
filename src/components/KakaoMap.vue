@@ -1,6 +1,6 @@
 <template>
   <main class="map">
-    <section class="mt-4">
+    <section>
       <KakaoMap
         width="auto"
         height="300px"

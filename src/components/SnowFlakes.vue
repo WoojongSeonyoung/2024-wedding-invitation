@@ -4,12 +4,21 @@
          :key="n"
          class="snowflake"
          :style="{ width: `${Math.random() * 20 + 10}px` }"
-         src="@/assets/icon/favorite.svg"
+         :src="getSrc(icon)"
          alt="눈송이"
     />
   </div>
 </template>
 <script setup>
+defineProps({
+  icon: {
+    type: String,
+    default: 'favorite'
+  },
+});
+
+const images = import.meta.glob('../assets/icon/*.{svg,png,jpg,jpeg}', { eager: true });
+const getSrc = (fileName) => images[`../assets/icon/${fileName}.svg`]?.default || '';
 </script>
 
 <style scoped lang="postcss">
