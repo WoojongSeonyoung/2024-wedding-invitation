@@ -1,13 +1,19 @@
 <template>
   <main>
-    <SubTitle message="갤러리"/>
-    <Gallery/>
+    <FirstView/>
     <Divider/>
-    <Calendar/>
-    <Divider/>
-    <SubTitle message="오시는 길"/>
-    <KakaoMap/>
-    <QuoteCard v-for="card in cards" :title="card.title" :content="card.content"/>
+    <SecondView/>
+    <section class="p-6">
+      <Divider/>
+      <SubTitle message="갤러리"/>
+      <Gallery/>
+      <Divider/>
+      <Calendar/>
+      <Divider/>
+      <SubTitle message="오시는 길"/>
+      <KakaoMap/>
+      <QuoteCard v-for="card in cards" :title="card.title" :content="card.content"/>
+    </section>
     <Footer/>
   </main>
 </template>
@@ -20,6 +26,8 @@ import Divider from '@/components/Divider.vue';
 import QuoteCard from '@/components/QuoteCard.vue';
 import Calendar from '@/components/Calendar.vue';
 import Gallery from '@/components/Gallery.vue';
+import FirstView from "@/components/FirstView.vue";
+import SecondView from "@/components/SecondView.vue";
 
 const cards = [
   {

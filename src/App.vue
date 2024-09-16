@@ -1,7 +1,7 @@
 <template>
   <div class="outer">
     <main class="app relative">
-      <CinemaNoise />
+<!--      <CinemaNoise />-->
       <SnowFlakes icon="favorite" />
       <router-view></router-view>
       <AudioButton />
@@ -22,6 +22,6 @@ import CinemaNoise from '@/components/CinemaNoise.vue';
 }
 
 .app {
-  @apply w-full max-w-md bg-white p-6 rounded-lg shadow-lg relative overflow-hidden
+  @apply w-full max-w-md bg-white rounded-lg shadow-lg relative overflow-hidden
 }
 </style>
