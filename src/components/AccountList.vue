@@ -22,6 +22,10 @@
       </div>
       <button
           @click="copyAccountNumber(account)"
+          :class="[
+            'text-white px-2 py-1 rounded cursor-pointer',
+            account.copied ? 'bg-rose-300 animate-bounce' : 'bg-gray-300',
+          ]"
           :aria-label="`${account.name}의 계좌번호 복사하기`"
       >
         {{ account.copied ? '복사됨' : '복사' }}
@@ -43,6 +47,10 @@
       </div>
       <button
           @click="copyAccountNumber(account)"
+          :class="[
+            'text-white px-2 py-1 rounded cursor-pointer',
+            account.copied ? 'bg-rose-300 animate-bounce' : 'bg-gray-300',
+          ]"
           :aria-label="`${account.name}의 계좌번호 복사하기`"
       >
         {{ account.copied ? '복사됨' : '복사' }}
@@ -76,7 +84,7 @@ const copyAccountNumber = (account) => {
         account.copied = true;
         setTimeout(() => {
           account.copied = false;
-        }, 2000); // 2초 후에 복사 상태 초기화
+        }, 3000);
       })
       .catch((err) => {
         console.error('계좌번호 복사 실패:', err);
@@ -96,13 +104,5 @@ const copyAccountNumber = (account) => {
 
 .account-info span {
   @apply mr-2;
-}
-
-.account-item button {
-  @apply bg-gray-300 text-white px-2 py-1 rounded cursor-pointer;
-}
-
-.account-item button:hover {
-  @apply bg-rose-300;
 }
 </style>
