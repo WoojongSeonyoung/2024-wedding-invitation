@@ -9,23 +9,27 @@
   <div v-if="isModalOpen" @click="closeModal"
        class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50">
     <SnowFlakes icon="snow"/>
-    <div class="relative overflow-hidden w-full max-w-3xl h-auto"
-         @mousedown="startDrag"
-         @mousemove="onDrag"
-         @mouseup="endDrag"
-         @mouseleave="endDrag"
-         @touchstart="startDrag"
-         @touchmove="onDrag"
-         @touchend="endDrag"
-         @click.stop
-    >
-      <div class="slider-container relative overflow-hidden w-full max-w-3xl h-auto" @click.stop>
+    <div class="relative overflow-hidden w-full max-w-3xl h-auto" @click.stop ref="modalContent">
+      <div class="slider-container">
         <div class="image-slider"
-             :style="{ transform: `translateX(${translateX}px)`, transition: isDragging ? 'none' : 'transform 0.5s ease' }">
-          <img v-for="(image, index) in images" :key="index" :src="getSrc(image.src)" :alt="image.alt"
-               class="image-item"/>
+             :style="{ transform: `translateX(${translateX}px)`, transition: 'transform 0.5s ease' }">
+          <img v-for="(image, index) in images"
+               :key="index"
+               :src="getSrc(image.src)"
+               :alt="image.alt"
+               class="image-item"
+          />
         </div>
       </div>
+      <!-- Left button -->
+      <button v-if="selectedImageIndex !== 0" @click="prevSlide" class="nav-button left-0">
+        &lt;
+      </button>
+      <!-- Right button -->
+      <button v-if="selectedImageIndex !== images.length - 1" @click="nextSlide" class="nav-button right-0">
+        &gt;
+      </button>
+
       <!-- 인덱스 표시하는 dot들 -->
       <div class="dots mt-4">
       <span
@@ -44,7 +48,7 @@
 </template>
 
 <script setup>
-import {ref} from 'vue';
+import {nextTick, ref} from 'vue';
 import SnowFlakes from "@/components/SnowFlakes.vue";
 
 const images = [
@@ -60,55 +64,47 @@ const images = [
 const isModalOpen = ref(false);
 const selectedImageIndex = ref(0);
 const translateX = ref(0);
-const startX = ref(0);
-const currentX = ref(0);
-const isDragging = ref(false);
+const modalContent = ref(null);
+const modalWidth = ref(0);
 
 const openModal = (index) => {
   selectedImageIndex.value = index;
-  translateX.value = -index * window.innerWidth;
   isModalOpen.value = true;
+  nextTick(() => {
+    updateModalWidth();
+    window.addEventListener('resize', updateModalWidth);
+  });
 };
 
 const closeModal = () => {
   isModalOpen.value = false;
+  window.removeEventListener('resize', updateModalWidth);
 };
 
-// 드래그 시작
-const startDrag = (event) => {
-  isDragging.value = true;
-  startX.value = event.type.includes('mouse') ? event.clientX : event.touches[0].clientX;
-  currentX.value = translateX.value;
-};
-
-// 드래그 중
-const onDrag = (event) => {
-  if (!isDragging.value) return;
-  const clientX = event.type.includes('mouse') ? event.clientX : event.touches[0].clientX;
-  const diff = clientX - startX.value;
-  translateX.value = currentX.value + diff;
-};
-
-// 드래그 종료
-const endDrag = () => {
-  isDragging.value = false;
-  const diff = translateX.value - currentX.value;
-
-  if (diff > 100 && selectedImageIndex.value > 0) {
-    selectedImageIndex.value--;  // 이전 이미지로 이동
-  } else if (diff < -100 && selectedImageIndex.value < images.length - 1) {
-    selectedImageIndex.value++;  // 다음 이미지로 이동
+const updateModalWidth = () => {
+  if (modalContent.value) {
+    modalWidth.value = modalContent.value.offsetWidth;
+    translateX.value = -selectedImageIndex.value * modalWidth.value;
   }
-
-  // 드래그 종료 후 슬라이더 위치 업데이트
-  translateX.value = -selectedImageIndex.value * window.innerWidth;
-  isDragging.value = false;
 };
 
-// dot 클릭 시 해당 이미지로 이동
+const nextSlide = () => {
+  if (selectedImageIndex.value < images.length - 1) {
+    selectedImageIndex.value++;
+    translateX.value = -selectedImageIndex.value * modalWidth.value;
+  }
+};
+
+const prevSlide = () => {
+  if (selectedImageIndex.value > 0) {
+    selectedImageIndex.value--;
+    translateX.value = -selectedImageIndex.value * modalWidth.value;
+  }
+};
+
 const goToSlide = (index) => {
   selectedImageIndex.value = index;
-  translateX.value = -index * window.innerWidth;
+  translateX.value = -index * modalWidth.value;
 };
 
 const globImage = import.meta.glob('../assets/*.{jpeg,png,svg,jpg}', {eager: true});
@@ -117,7 +113,7 @@ const getSrc = (imageSrc) => {
     return imageSrc;
   }
   return globImage[`../assets/${imageSrc}`]?.default || '';
-}
+};
 </script>
 
 <style scoped lang="postcss">
@@ -180,5 +176,18 @@ const getSrc = (imageSrc) => {
 
 .dot.active {
   background-color: rgba(255, 255, 255, 1);
+}
+
+/* Navigation buttons */
+.nav-button {
+  @apply absolute top-1/2 transform -translate-y-1/2 text-white text-2xl p-2 bg-black bg-opacity-25 rounded-full;
+}
+
+.nav-button.left-0 {
+  left: 10px;
+}
+
+.nav-button.right-0 {
+  right: 10px;
 }
 </style>
