@@ -13,6 +13,9 @@
       <SubTitle message="오시는 길"/>
       <KakaoMap/>
       <QuoteCard v-for="card in cards" :title="card.title" :content="card.content"/>
+      <Divider/>
+      <SubTitle message="마음 전하실 곳"/>
+      <AccountList/>
     </section>
     <Footer/>
   </main>
@@ -28,6 +31,7 @@ import Calendar from '@/components/Calendar.vue';
 import Gallery from '@/components/Gallery.vue';
 import FirstView from "@/components/FirstView.vue";
 import SecondView from "@/components/SecondView.vue";
+import AccountList from "@/components/AccountList.vue";
 
 const cards = [
   {
