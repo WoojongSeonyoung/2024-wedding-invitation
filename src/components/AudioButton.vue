@@ -1,6 +1,11 @@
 <template>
   <button @click="toggleMusic" class="fixed top-2 right-2 p-4 rounded-full">
-    <MusicalNoteIcon :class="isPlaying ? 'text-pink-200' : 'text-gray-400'" class="w-6 h-6" />
+    <MusicalNoteIcon
+        :class="[
+        'w-6 h-6',
+        isPlaying ? 'text-rose-300 animate-bounce' : 'text-gray-400',
+      ]"
+    />
   </button>
 </template>
 
