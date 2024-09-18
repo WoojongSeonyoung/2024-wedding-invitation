@@ -22,8 +22,9 @@
                           : 'bg-rose-300 text-white'
                       ]"
           >
-            <p class="text-sm">
-              <span class="font-semibold">{{ message.username }}:&nbsp;</span>
+            <p class="text-sm whitespace-pre-wrap">
+              <span class="font-semibold">{{ message.username }}:</span>
+              <br/>
               <span>{{ message.text }}</span>
             </p>
           </div>
@@ -67,10 +68,13 @@
                   d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99"/>
           </svg>
         </div>
-        <input
+        <textarea
             v-model="newMessage"
             placeholder="축하의 메시지를 남겨주세요..."
             aria-label="메시지 입력"
+            @input="autoResizeTextarea"
+            rows="1"
+            ref="messageTextarea"
         />
         <button
             :disabled="newMessage.trim().length === 0"
@@ -130,10 +134,14 @@ const sendMessage = () => {
     text: newMessage.value,
     timestamp: Date.now(),
   };
+  console.log(messageData);
 
   push(messagesRef, messageData)
       .then(() => {
         newMessage.value = '';
+        nextTick(() => {
+          autoResizeTextarea();
+        });
         focusInputField();
       })
       .catch((error) => {
@@ -161,6 +169,10 @@ onMounted(() => {
     messages.value.push(message);
     scrollToBottom();
   });
+
+  nextTick(() => {
+    autoResizeTextarea();
+  });
 });
 
 onUnmounted(() => {
@@ -168,6 +180,16 @@ onUnmounted(() => {
     unsubscribe();
   }
 });
+
+const messageTextarea = ref(null);
+
+const autoResizeTextarea = () => {
+  const textarea = messageTextarea.value;
+  if (textarea) {
+    textarea.style.height = 'auto'; // 높이 초기화
+    textarea.style.height = textarea.scrollHeight + 'px'; // 내용에 맞게 높이 조절
+  }
+}
 
 const messagesContainer = ref(null);
 
@@ -200,7 +222,7 @@ const focusUsernameInput = () => {
 
 <style scoped lang="postcss">
 .chat-room {
-  @apply flex flex-col h-50vh bg-gray-100 rounded-lg shadow-lg overflow-hidden;
+  @apply flex flex-col h-60vh bg-gray-100 rounded-lg shadow-lg overflow-hidden;
 }
 
 .messages {
@@ -229,9 +251,16 @@ const focusUsernameInput = () => {
   @apply flex items-center p-2 bg-white border-t;
 }
 
-.username-input input,
-.input-area input {
-  @apply flex-1 p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500;
+.username-input input {
+  @apply flex-1 min-w-0 p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500;
+}
+
+.input-area textarea {
+  @apply flex-1 min-w-0 p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500;
+  height: auto;
+  min-height: 2.5rem;
+  resize: none;
+  overflow-y: hidden;
 }
 
 .username-input button,
