@@ -6,7 +6,13 @@ export default {
   ],
   darkMode: 'media',
   theme: {
-    extend: {},
+    extend: {
+      height: {
+        '50vh': '50vh',
+        '60vh': '60vh',
+        '70vh': '70vh',
+      },
+    },
   },
   variants: {
     extend: {},
