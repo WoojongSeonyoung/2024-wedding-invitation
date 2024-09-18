@@ -2,27 +2,27 @@
   <main class="map">
     <section>
       <KakaoMap
-        width="auto"
-        height="300px"
-        :lat="coordinate.lat"
-        :lng="coordinate.lng"
-        :draggable="true"
-        :scrollwheel="true"
-        :level="4"
-      >
-        <KakaoMapMarker
+          width="auto"
+          height="300px"
           :lat="coordinate.lat"
           :lng="coordinate.lng"
-          :clickable="true"
-          :infoWindow="{ content: '충주컨벤션 웨딩홀', visible: visibleRef }"
-          @onClickKakaoMapMarker="toggleInfo"
+          :draggable="true"
+          :scrollwheel="true"
+          :level="4"
+      >
+        <KakaoMapMarker
+            :lat="coordinate.lat"
+            :lng="coordinate.lng"
+            :clickable="true"
+            :infoWindow="{ content: '충주컨벤션 웨딩홀', visible: visibleRef }"
+            @onClickKakaoMapMarker="toggleInfo"
         >
         </KakaoMapMarker>
       </KakaoMap>
     </section>
     <section class="flex justify-center space-x-6 mt-6">
       <div v-for="map in mapLinks" :key="map.fileName" class="iconTextWrapper">
-        <img :src="getSrc(map.fileName)" @click="openUrl(map.url)" class="appIcon" :alt="map.fileName" />
+        <img :src="getSrc(map.fileName)" @click="openUrl(map.url)" class="appIcon" :alt="map.fileName"/>
         <p class="appText">{{ map.koName }}</p>
       </div>
     </section>
@@ -30,8 +30,8 @@
 </template>
 
 <script setup>
-import { KakaoMap, KakaoMapMarker } from 'vue3-kakao-maps';
-import { ref } from 'vue';
+import {KakaoMap, KakaoMapMarker} from 'vue3-kakao-maps';
+import {ref} from 'vue';
 
 // 충주컨벤션센터 웨딩홀 좌표
 const coordinate = {
@@ -61,7 +61,7 @@ const mapLinks = [
     koName: '구글맵',
   },
 ];
-const images = import.meta.glob('../assets/icon/*.{jpeg,png,svg}', { eager: true });
+const images = import.meta.glob('../assets/icon/*.{jpeg,png,svg}', {eager: true});
 const getSrc = (fileName) => images[`../assets/icon/${fileName}`]?.default || '';
 const openUrl = (url) => window.open(url, '_blank');
 const visibleRef = ref(false);

@@ -4,22 +4,22 @@
       <p>2024.11.16</p>
       <p>토요일 오전 11시</p>
       <VueDatePicker
-        class="mx-auto max-w-full"
-        v-model="date"
-        :min-date="minMaxDate"
-        :max-date="minMaxDate"
-        :min-time="minMaxTime"
-        :max-time="minMaxTime"
-        :year-range="[2020, 2030]"
-        :disabled-dates="disabledDates"
-        :on-year-change="resetDate"
-        :on-month-change="resetDate"
-        :format-locale="ko"
-        format="E"
-        week-start="0"
-        prevent-min-max-navigation
-        inline
-        auto-apply
+          class="mx-auto max-w-full"
+          v-model="date"
+          :min-date="minMaxDate"
+          :max-date="minMaxDate"
+          :min-time="minMaxTime"
+          :max-time="minMaxTime"
+          :year-range="[2020, 2030]"
+          :disabled-dates="disabledDates"
+          :on-year-change="resetDate"
+          :on-month-change="resetDate"
+          :format-locale="ko"
+          format="E"
+          week-start="0"
+          prevent-min-max-navigation
+          inline
+          auto-apply
       >
         <template #arrow-left>
           🤵🏻
@@ -28,15 +28,15 @@
           👰🏻‍♀️
         </template>
         <template #clock-icon>
-          <img class="slot-icon" src="@/assets/icon/favorite.svg" alt="favorite" />
+          <img class="slot-icon" src="@/assets/icon/favorite.svg" alt="favorite"/>
         </template>
       </VueDatePicker>
       <p>우리가 처음 만난 지
-        <DdayCalculator date="2013-06-02" />
+        <DdayCalculator date="2013-06-02"/>
         일
       </p>
       <p>우종, 선영의 결혼식이
-        <DdayCalculator date="2024-11-16" />
+        <DdayCalculator date="2024-11-16"/>
         일 남았습니다.
       </p>
     </section>
@@ -47,7 +47,7 @@
 import VueDatePicker from '@vuepic/vue-datepicker';
 import '@vuepic/vue-datepicker/dist/main.css';
 import DdayCalculator from '@/components/DdayCalculator.vue';
-import { ko } from 'date-fns/locale';
+import {ko} from 'date-fns/locale';
 
 const minMaxDate = new Date('2024-11-16');
 const minMaxTime = new Date('2024-11-16 11:00:00');

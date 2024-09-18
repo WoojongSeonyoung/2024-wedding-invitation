@@ -11,8 +11,8 @@
     <p>신랑 측 계좌번호</p>
     <div class="border-t border-gray-300 my-4"></div>
     <div v-for="(account, index) in accountListHusband"
-       :key="`husband-${index}`"
-       class="account-item"
+         :key="`husband-${index}`"
+         class="account-item"
     >
       <div class="account-info">
         <span>{{ account.title }}</span>
@@ -36,8 +36,8 @@
     <p>신부 측 계좌번호</p>
     <div class="border-t border-gray-300 my-4"></div>
     <div v-for="(account, index) in accountListWife"
-       :key="`wife-${index}`"
-       class="account-item"
+         :key="`wife-${index}`"
+         class="account-item"
     >
       <div class="account-info">
         <span>{{ account.title }}</span>

@@ -52,13 +52,48 @@ import {nextTick, ref} from 'vue';
 import SnowFlakes from "@/components/SnowFlakes.vue";
 
 const images = [
-  { src: 'https://placehold.co/600x400', alt: 'Gallery Image 1', wrapperClass: 'horizontal-wrapper', sizeClass: 'image-wrapper-100' },
-  { src: 'https://placehold.co/400x600', alt: 'Gallery Image 2', wrapperClass: 'vertical-wrapper', sizeClass: 'image-wrapper-50' },
-  { src: 'https://placehold.co/600x400', alt: 'Gallery Image 3', wrapperClass: 'horizontal-wrapper', sizeClass: 'image-wrapper-100' },
-  { src: 'https://placehold.co/600x400', alt: 'Gallery Image 4', wrapperClass: 'horizontal-wrapper', sizeClass: 'image-wrapper-100' },
-  { src: 'https://placehold.co/600x400', alt: 'Gallery Image 5', wrapperClass: 'horizontal-wrapper', sizeClass: 'image-wrapper-100' },
-  { src: 'https://placehold.co/400x600', alt: 'Gallery Image 6', wrapperClass: 'vertical-wrapper', sizeClass: 'image-wrapper-50' },
-  { src: 'https://placehold.co/600x400', alt: 'Gallery Image 7', wrapperClass: 'horizontal-wrapper', sizeClass: 'image-wrapper-100' }
+  {
+    src: 'https://placehold.co/600x400',
+    alt: 'Gallery Image 1',
+    wrapperClass: 'horizontal-wrapper',
+    sizeClass: 'image-wrapper-100'
+  },
+  {
+    src: 'https://placehold.co/400x600',
+    alt: 'Gallery Image 2',
+    wrapperClass: 'vertical-wrapper',
+    sizeClass: 'image-wrapper-50'
+  },
+  {
+    src: 'https://placehold.co/600x400',
+    alt: 'Gallery Image 3',
+    wrapperClass: 'horizontal-wrapper',
+    sizeClass: 'image-wrapper-100'
+  },
+  {
+    src: 'https://placehold.co/600x400',
+    alt: 'Gallery Image 4',
+    wrapperClass: 'horizontal-wrapper',
+    sizeClass: 'image-wrapper-100'
+  },
+  {
+    src: 'https://placehold.co/600x400',
+    alt: 'Gallery Image 5',
+    wrapperClass: 'horizontal-wrapper',
+    sizeClass: 'image-wrapper-100'
+  },
+  {
+    src: 'https://placehold.co/400x600',
+    alt: 'Gallery Image 6',
+    wrapperClass: 'vertical-wrapper',
+    sizeClass: 'image-wrapper-50'
+  },
+  {
+    src: 'https://placehold.co/600x400',
+    alt: 'Gallery Image 7',
+    wrapperClass: 'horizontal-wrapper',
+    sizeClass: 'image-wrapper-100'
+  }
 ];
 
 const isModalOpen = ref(false);

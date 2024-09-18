@@ -17,7 +17,7 @@ defineProps({
   },
 });
 
-const images = import.meta.glob('../assets/icon/*.{svg,png,jpg,jpeg}', { eager: true });
+const images = import.meta.glob('../assets/icon/*.{svg,png,jpg,jpeg}', {eager: true});
 const getSrc = (fileName) => images[`../assets/icon/${fileName}.svg`]?.default || '';
 </script>
 

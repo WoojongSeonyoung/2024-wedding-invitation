@@ -12,7 +12,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue';
+import {ref, onMounted} from 'vue';
 
 // showCinemaEffect 상태를 통해 컴포넌트 표시 여부를 제어
 const showCinemaEffect = ref(true);

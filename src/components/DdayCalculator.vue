@@ -6,7 +6,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted, reactive, watch } from 'vue';
+import {ref, onMounted, reactive, watch} from 'vue';
 import gsap from 'gsap';
 
 let props = defineProps({
@@ -45,7 +45,7 @@ const setDday = () => {
 };
 
 watch(number, (n) => {
-  gsap.to(tweened, { duration: 3, number: Number(n) || 0 });
+  gsap.to(tweened, {duration: 3, number: Number(n) || 0});
 });
 
 </script>
