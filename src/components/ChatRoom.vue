@@ -105,7 +105,7 @@ const username = ref('');
 const isUsernameSet = ref(false);
 
 const messagesRef = dbRef(db, 'messages');
-const messagesQuery = query(messagesRef, orderByChild('timestamp'), limitToLast(50));
+const messagesQuery = query(messagesRef, orderByChild('timestamp'), limitToLast(200));
 
 // 사용자 이름 설정 함수
 const setUsername = () => {
