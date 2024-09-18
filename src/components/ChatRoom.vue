@@ -1,6 +1,6 @@
 <template>
-  <div class="chat-room h-50vh bg-gray-100 rounded-lg shadow-lg overflow-hidden flex flex-col">
-    <div class="messages flex-1 overflow-y-auto p-4 space-y-4" ref="messagesContainer">
+  <div class="chat-room">
+    <div class="messages" ref="messagesContainer">
       <div
           v-for="(message) in messages"
           :key="message.id"
@@ -8,8 +8,10 @@
       >
         <div
             :class="[
-                    'flex items-end',
-                    message.username === username ? 'justify-end' : 'justify-start'
+                    'flex',
+                    message.username === username
+                      ? 'justify-end'
+                      : 'justify-start'
                   ]"
         >
           <div
@@ -21,39 +23,38 @@
                       ]"
           >
             <p class="text-sm">
-              <span class="font-semibold">{{ message.username }}:</span>
-              {{ message.text }}
+              <span class="font-semibold">{{ message.username }}:&nbsp;</span>
+              <span>{{ message.text }}</span>
             </p>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- 사용자 이름 입력 섹션 -->
+    <!-- 사용자 이름 입력 영역 -->
     <template v-if="!isUsernameSet">
-      <div class="username-input flex items-center p-2 bg-white border-t">
+      <div class="username-input">
         <input
             v-model="usernameInput"
             placeholder="이름을 입력하세요..."
-            class="flex-1 p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             aria-label="사용자 이름 입력"
         />
         <button
             :disabled="usernameInput.trim().length === 0"
             @click="setUsername"
-            class="ml-2 px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 disabled:opacity-50"
+            class="bg-green-500"
         >
           시작
         </button>
       </div>
     </template>
 
-    <!-- 채팅 화면 -->
+    <!-- 채팅 입력 영역 -->
     <template v-else>
-      <div class="input-area flex items-center p-2 bg-white border-t">
-        <button
+      <div class="input-area">
+        <div
             @click="resetUsername"
-            class="text-gray-500 hover:text-gray-700 focus:outline-none mr-2"
+            class="text-gray-500 hover:text-gray-900 focus:outline-none mr-2 flex-shrink-0"
         >
           <svg
               class="w-6 h-6"
@@ -65,17 +66,16 @@
             <path stroke-linecap="round" stroke-linejoin="round"
                   d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99"/>
           </svg>
-        </button>
+        </div>
         <input
             v-model="newMessage"
             placeholder="축하의 메시지를 남겨주세요..."
-            class="flex-1 p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             aria-label="메시지 입력"
         />
         <button
             :disabled="newMessage.trim().length === 0"
             @click="sendMessage"
-            class="ml-2 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 disabled:opacity-50"
+            class="bg-blue-500"
         >
           전송
         </button>
@@ -93,13 +93,12 @@ import {
   push,
   query,
   orderByChild,
-  limitToLast, onValue,
+  limitToLast,
 } from 'firebase/database';
 
 const messages = ref([]);
 const newMessage = ref('');
 
-// 사용자 이름 관련 상태 변수
 const usernameInput = ref('');
 const username = ref('');
 const isUsernameSet = ref(false);
@@ -107,7 +106,6 @@ const isUsernameSet = ref(false);
 const messagesRef = dbRef(db, 'messages');
 const messagesQuery = query(messagesRef, orderByChild('timestamp'), limitToLast(200));
 
-// 사용자 이름 설정 함수
 const setUsername = () => {
   if (usernameInput.value.length === 0) return;
   username.value = usernameInput.value.toString().trim();
@@ -124,17 +122,15 @@ const resetUsername = () => {
   focusUsernameInput();
 };
 
-// 메시지 전송 함수
 const sendMessage = () => {
   if (newMessage.value.length === 0) return;
 
   const messageData = {
     username: username.value,
     text: newMessage.value,
-    timestamp: Date.now(), // 서버 시간을 사용할 수 없으므로 클라이언트 시간을 사용
+    timestamp: Date.now(),
   };
 
-  // 새로운 메시지를 데이터베이스에 추가
   push(messagesRef, messageData)
       .then(() => {
         newMessage.value = '';
@@ -163,7 +159,6 @@ onMounted(() => {
     message.id = data.key;
 
     messages.value.push(message);
-    // 스크롤을 맨 아래로 이동
     scrollToBottom();
   });
 });
@@ -176,7 +171,6 @@ onUnmounted(() => {
 
 const messagesContainer = ref(null);
 
-// 스크롤을 맨 아래로 이동하는 함수
 const scrollToBottom = () => {
   nextTick(() => {
     if (messagesContainer.value) {
@@ -206,11 +200,11 @@ const focusUsernameInput = () => {
 
 <style scoped lang="postcss">
 .chat-room {
-  @apply flex flex-col;
+  @apply flex flex-col h-50vh bg-gray-100 rounded-lg shadow-lg overflow-hidden;
 }
 
 .messages {
-  @apply flex-1 overflow-y-auto p-2;
+  @apply overflow-y-auto p-2 space-y-4;
 }
 
 .messages::-webkit-scrollbar {
@@ -230,28 +224,18 @@ const focusUsernameInput = () => {
   @apply mb-2;
 }
 
-.username-input {
-  @apply flex;
-}
-
-.username-input input {
-  @apply flex-1 p-2 text-base;
-}
-
-.username-input button {
-  @apply p-2 text-base;
-}
-
+.username-input,
 .input-area {
-  @apply flex;
+  @apply flex items-center p-2 bg-white border-t;
 }
 
+.username-input input,
 .input-area input {
-  @apply flex-1 p-2 text-base;
+  @apply flex-1 p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500;
 }
 
+.username-input button,
 .input-area button {
-  @apply p-2 text-base;
+  @apply ml-2 px-4 py-2 text-white rounded-lg hover:bg-opacity-80 disabled:opacity-50 flex-shrink-0;
 }
-
 </style>
