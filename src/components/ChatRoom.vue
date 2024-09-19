@@ -190,7 +190,7 @@ const handleLongPressStart = (message) => {
       messageToDelete.value = message;
       showDeleteConfirm.value = true;
     }
-  }, 1000); // 1초 동안 눌렀을 때 실행
+  }, 500); // 0.5초 동안 눌렀을 때 실행
 };
 
 // 메시지 꾹 누르기 해제
