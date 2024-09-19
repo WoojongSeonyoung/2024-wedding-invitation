@@ -56,7 +56,7 @@
             aria-label="사용자 이름 입력"
         />
         <button
-            :disabled="usernameInput.trim().length === 0"
+            :disabled="isUsernameBlank"
             @click="setUsername"
             class="bg-green-500"
         >
@@ -92,7 +92,7 @@
             ref="messageTextarea"
         />
         <button
-            :disabled="newMessage.trim().length === 0"
+            :disabled="isMessageBlank"
             @click="sendMessage"
             class="bg-blue-500"
         >
@@ -104,7 +104,7 @@
 </template>
 
 <script setup>
-import {ref, onMounted, onUnmounted, watch, nextTick} from 'vue';
+import { ref, onMounted, onUnmounted, watch, nextTick, computed } from 'vue';
 import db from "@/api/dataService.js";
 import {
   ref as dbRef,
@@ -135,9 +135,17 @@ const newMessage = ref('');
 const showDeleteConfirm = ref(false);
 const messageToDelete = ref(null);
 
+const isMessageBlank = computed(() => {
+  return newMessage.value.toString().trim().length === 0;
+});
+
 const usernameInput = ref('');
 const username = ref('');
 const isUsernameSet = ref(false);
+
+const isUsernameBlank = computed(() => {
+  return usernameInput.value.toString().trim().length === 0;
+});
 
 const userId = ref('');
 
