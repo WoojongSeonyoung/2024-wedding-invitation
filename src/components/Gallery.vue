@@ -1,99 +1,101 @@
 <template>
-  <div class="gallery-container grid grid-cols-3 gap-3">
-    <div v-for="(image, index) in images" :key="index" :class="image.wrapperClass">
-      <div :class="image.sizeClass">
-        <img @click="openModal(index)" :src="getSrc(image.src)" :alt="image.alt" class="image-container"/>
-      </div>
-    </div>
-  </div>
-  <div v-if="isModalOpen" @click="closeModal"
-       class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50">
-    <SnowFlakes icon="snow"/>
-    <div class="relative overflow-hidden w-full max-w-3xl h-auto" @click.stop ref="modalContent">
-      <div class="slider-container">
-        <div class="image-slider"
-             :style="{ transform: `translateX(${translateX}px)`, transition: 'transform 0.5s ease' }">
-          <img v-for="(image, index) in images"
-               :key="index"
-               :src="getSrc(image.src)"
-               :alt="image.alt"
-               class="image-item"
-          />
+  <section>
+    <div class="gallery-container grid grid-cols-3 gap-3">
+      <div v-for="(image, index) in images" :key="index" :class="image.wrapperClass">
+        <div :class="image.sizeClass">
+          <img @click="openModal(index)" :src="getSrc(image.src)" :alt="image.alt" class="image-container" />
         </div>
       </div>
-      <!-- Left button -->
-      <button v-if="selectedImageIndex !== 0" @click="prevSlide" class="nav-button left-0">
-        &lt;
-      </button>
-      <!-- Right button -->
-      <button v-if="selectedImageIndex !== images.length - 1" @click="nextSlide" class="nav-button right-0">
-        &gt;
-      </button>
-
-      <!-- 인덱스 표시하는 dot들 -->
-      <div class="dots mt-4">
-      <span
-          v-for="index in images.length"
-          :key="index - 1"
-          @click="goToSlide(index - 1)"
-          :class="{ active: index - 1 === selectedImageIndex }"
-          class="dot"
-      ></span>
-      </div>
-      <button @click="closeModal" class="absolute top-2 right-2 text-white text-xl">
-        ✕
-      </button>
     </div>
-  </div>
+    <div v-if="isModalOpen" @click="closeModal"
+         class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50">
+      <SnowFlakes icon="snow" />
+      <div class="relative overflow-hidden w-full max-w-3xl h-auto" @click.stop ref="modalContent">
+        <div class="slider-container">
+          <div class="image-slider"
+               :style="{ transform: `translateX(${translateX}px)`, transition: 'transform 0.5s ease' }">
+            <img v-for="(image, index) in images"
+                 :key="index"
+                 :src="getSrc(image.src)"
+                 :alt="image.alt"
+                 class="image-item"
+            />
+          </div>
+        </div>
+        <!-- Left button -->
+        <button v-if="selectedImageIndex !== 0" @click="prevSlide" class="nav-button left-0">
+          &lt;
+        </button>
+        <!-- Right button -->
+        <button v-if="selectedImageIndex !== images.length - 1" @click="nextSlide" class="nav-button right-0">
+          &gt;
+        </button>
+
+        <!-- 인덱스 표시하는 dot들 -->
+        <div class="dots mt-4">
+      <span
+        v-for="index in images.length"
+        :key="index - 1"
+        @click="goToSlide(index - 1)"
+        :class="{ active: index - 1 === selectedImageIndex }"
+        class="dot"
+      ></span>
+        </div>
+        <button @click="closeModal" class="absolute top-2 right-2 text-white text-xl">
+          ✕
+        </button>
+      </div>
+    </div>
+  </section>
 </template>
 
 <script setup>
-import {nextTick, ref} from 'vue';
-import SnowFlakes from "@/components/SnowFlakes.vue";
+import { nextTick, ref } from 'vue';
+import SnowFlakes from '@/components/SnowFlakes.vue';
 
 const images = [
   {
     src: 'https://placehold.co/600x400',
     alt: 'Gallery Image 1',
     wrapperClass: 'horizontal-wrapper',
-    sizeClass: 'image-wrapper-100'
+    sizeClass: 'image-wrapper-100',
   },
   {
     src: 'https://placehold.co/400x600',
     alt: 'Gallery Image 2',
     wrapperClass: 'vertical-wrapper',
-    sizeClass: 'image-wrapper-50'
+    sizeClass: 'image-wrapper-50',
   },
   {
     src: 'https://placehold.co/600x400',
     alt: 'Gallery Image 3',
     wrapperClass: 'horizontal-wrapper',
-    sizeClass: 'image-wrapper-100'
+    sizeClass: 'image-wrapper-100',
   },
   {
     src: 'https://placehold.co/600x400',
     alt: 'Gallery Image 4',
     wrapperClass: 'horizontal-wrapper',
-    sizeClass: 'image-wrapper-100'
+    sizeClass: 'image-wrapper-100',
   },
   {
     src: 'https://placehold.co/600x400',
     alt: 'Gallery Image 5',
     wrapperClass: 'horizontal-wrapper',
-    sizeClass: 'image-wrapper-100'
+    sizeClass: 'image-wrapper-100',
   },
   {
     src: 'https://placehold.co/400x600',
     alt: 'Gallery Image 6',
     wrapperClass: 'vertical-wrapper',
-    sizeClass: 'image-wrapper-50'
+    sizeClass: 'image-wrapper-50',
   },
   {
     src: 'https://placehold.co/600x400',
     alt: 'Gallery Image 7',
     wrapperClass: 'horizontal-wrapper',
-    sizeClass: 'image-wrapper-100'
-  }
+    sizeClass: 'image-wrapper-100',
+  },
 ];
 
 const isModalOpen = ref(false);
@@ -142,7 +144,7 @@ const goToSlide = (index) => {
   translateX.value = -index * modalWidth.value;
 };
 
-const globImage = import.meta.glob('../assets/*.{jpeg,png,svg,jpg}', {eager: true});
+const globImage = import.meta.glob('../assets/*.{jpeg,png,svg,jpg}', { eager: true });
 const getSrc = (imageSrc) => {
   if (imageSrc.startsWith('http')) {
     return imageSrc;

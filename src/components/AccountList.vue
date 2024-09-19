@@ -1,93 +1,95 @@
 <template>
-  <section class="text-center">
-    <p>
-      저희의 행복한 첫걸음을 따듯한 마음으로 축복해 주시면
-    </p>
-    <p>
-      더없이 행복하게 잘 살겠습니다.
-    </p>
-  </section>
-  <section class="mt-8">
-    <div class="flex">
-      <p class="flex-1">신랑 측 계좌번호</p>
-      <button @click="toggleHusbandAccounts"
-              class="toggle-button"
-              :class="isHusbandAccountsVisible ? 'bg-blue-300' : 'bg-gray-300'"
-      >
-        {{ isHusbandAccountsVisible ? '숨기기' : '펼치기' }}
-      </button>
-    </div>
-    <transition name="fade">
-      <div v-if="isHusbandAccountsVisible">
-        <div class="border-t border-gray-300 my-4"></div>
-        <div v-for="(account, index) in accountListHusband"
-             :key="`husband-${index}`"
-             class="account-item"
+  <section>
+    <section class="text-center">
+      <p>
+        저희의 행복한 첫걸음을 따듯한 마음으로 축복해 주시면
+      </p>
+      <p>
+        더없이 행복하게 잘 살겠습니다.
+      </p>
+    </section>
+    <section class="mt-8">
+      <div class="flex">
+        <p class="flex-1">신랑 측 계좌번호</p>
+        <button @click="toggleHusbandAccounts"
+                class="toggle-button"
+                :class="isHusbandAccountsVisible ? 'bg-blue-300' : 'bg-gray-300'"
         >
-          <div class="account-info">
-            <div class="account-line">
-              <span>{{ account.title }}</span>
-              <span>{{ account.name }}</span>
+          {{ isHusbandAccountsVisible ? '숨기기' : '펼치기' }}
+        </button>
+      </div>
+      <transition name="fade">
+        <div v-if="isHusbandAccountsVisible">
+          <div class="border-t border-gray-300 my-4"></div>
+          <div v-for="(account, index) in accountListHusband"
+               :key="`husband-${index}`"
+               class="account-item"
+          >
+            <div class="account-info">
+              <div class="account-line">
+                <span>{{ account.title }}</span>
+                <span>{{ account.name }}</span>
+              </div>
+              <div class="account-line">
+                <span>{{ account.accountBank }}</span>
+                <span>{{ account.accountNumber }}</span>
+              </div>
             </div>
-            <div class="account-line">
-              <span>{{ account.accountBank }}</span>
-              <span>{{ account.accountNumber }}</span>
-            </div>
-          </div>
-          <button
-            @click="copyAccountNumber(account)"
-            :class="[
+            <button
+              @click="copyAccountNumber(account)"
+              :class="[
             'text-white px-2 py-1 rounded cursor-pointer',
             account.copied ? 'bg-blue-300 animate-bounce' : 'bg-gray-300',
           ]"
-            :aria-label="`${account.name}의 계좌번호 복사하기`"
-          >
-            {{ account.copied ? '복사됨' : '복사' }}
-          </button>
-        </div>
-      </div>
-    </transition>
-  </section>
-  <section class="mt-8">
-    <div class="flex">
-      <p class="flex-1">신부 측 계좌번호</p>
-      <button @click="toggleWifeAccounts"
-              class="toggle-button"
-              :class="isWifeAccountsVisible ? 'bg-rose-300' : 'bg-gray-300'"
-      >
-        {{ isWifeAccountsVisible ? '숨기기' : '펼치기' }}
-      </button>
-    </div>
-    <transition name="fade">
-      <div v-if="isWifeAccountsVisible">
-        <div class="border-t border-gray-300 my-4"></div>
-        <div v-for="(account, index) in accountListWife"
-             :key="`wife-${index}`"
-             class="account-item"
-        >
-          <div class="account-info">
-            <div class="account-line">
-              <span>{{ account.title }}</span>
-              <span>{{ account.name }}</span>
-            </div>
-            <div class="account-line">
-              <span>{{ account.accountBank }}</span>
-              <span>{{ account.accountNumber }}</span>
-            </div>
+              :aria-label="`${account.name}의 계좌번호 복사하기`"
+            >
+              {{ account.copied ? '복사됨' : '복사' }}
+            </button>
           </div>
-          <button
-            @click="copyAccountNumber(account)"
-            :class="[
+        </div>
+      </transition>
+    </section>
+    <section class="mt-8">
+      <div class="flex">
+        <p class="flex-1">신부 측 계좌번호</p>
+        <button @click="toggleWifeAccounts"
+                class="toggle-button"
+                :class="isWifeAccountsVisible ? 'bg-rose-300' : 'bg-gray-300'"
+        >
+          {{ isWifeAccountsVisible ? '숨기기' : '펼치기' }}
+        </button>
+      </div>
+      <transition name="fade">
+        <div v-if="isWifeAccountsVisible">
+          <div class="border-t border-gray-300 my-4"></div>
+          <div v-for="(account, index) in accountListWife"
+               :key="`wife-${index}`"
+               class="account-item"
+          >
+            <div class="account-info">
+              <div class="account-line">
+                <span>{{ account.title }}</span>
+                <span>{{ account.name }}</span>
+              </div>
+              <div class="account-line">
+                <span>{{ account.accountBank }}</span>
+                <span>{{ account.accountNumber }}</span>
+              </div>
+            </div>
+            <button
+              @click="copyAccountNumber(account)"
+              :class="[
             'text-white px-2 py-1 rounded cursor-pointer',
             account.copied ? 'bg-rose-300 animate-bounce' : 'bg-gray-300',
           ]"
-            :aria-label="`${account.name}의 계좌번호 복사하기`"
-          >
-            {{ account.copied ? '복사됨' : '복사' }}
-          </button>
+              :aria-label="`${account.name}의 계좌번호 복사하기`"
+            >
+              {{ account.copied ? '복사됨' : '복사' }}
+            </button>
+          </div>
         </div>
-      </div>
-    </transition>
+      </transition>
+    </section>
   </section>
 </template>
 

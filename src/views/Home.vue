@@ -4,21 +4,21 @@
     <Divider/>
     <SecondView/>
     <section class="p-6">
-      <Divider/>
-      <SubTitle message="갤러리"/>
-      <Gallery/>
-      <Divider/>
-      <Calendar/>
-      <Divider/>
-      <SubTitle message="오시는 길"/>
-      <KakaoMap/>
-      <QuoteCard v-for="card in cards" :title="card.title" :content="card.content"/>
-      <Divider/>
-      <SubTitle message="마음 전하실 곳"/>
-      <AccountList/>
-      <Divider/>
-      <SubTitle message="방명록"/>
-      <ChatRoom/>
+      <Divider class="animate-section"/>
+      <SubTitle class="animate-section" message="갤러리"/>
+      <Gallery class="animate-section"/>
+      <Divider class="animate-section"/>
+      <Calendar class="animate-section"/>
+      <Divider class="animate-section"/>
+      <SubTitle class="animate-section" message="오시는 길"/>
+      <KakaoMap class="animate-section"/>
+      <QuoteCard v-for="card in cards" :title="card.title" :content="card.content" class="animate-section"/>
+      <Divider class="animate-section"/>
+      <SubTitle class="animate-section" message="마음 전하실 곳"/>
+      <AccountList class="animate-section"/>
+      <Divider class="animate-section"/>
+      <SubTitle class="animate-section" message="방명록"/>
+      <ChatRoom class="animate-section"/>
     </section>
     <Footer/>
   </main>
@@ -36,6 +36,7 @@ import FirstView from "@/components/FirstView.vue";
 import SecondView from "@/components/SecondView.vue";
 import AccountList from "@/components/AccountList.vue";
 import ChatRoom from "@/components/ChatRoom.vue";
+import { onMounted, ref } from 'vue';
 
 const cards = [
   {
@@ -60,8 +61,45 @@ const cards = [
   },
 ];
 
+const sections = ref([]);
+
+onMounted(() => {
+  // 모든 .animate-section 클래스를 가진 요소를 선택
+  sections.value = document.querySelectorAll('.animate-section');
+
+  // IntersectionObserver 옵션
+  const observerOptions = {
+    threshold: 0.5, // 10%가 보일 때 트리거
+  };
+
+  const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('fade-in'); // 페이드 인 효과 추가
+        observer.unobserve(entry.target); // 관찰 해제
+      }
+    });
+  }, observerOptions);
+
+  // 각 섹션을 관찰 대상으로 설정
+  sections.value.forEach((section) => {
+    observer.observe(section);
+  });
+});
+
 </script>
 
 <style scoped lang="postcss">
+/* 기본적으로 섹션을 숨김 (페이드 전) */
+.animate-section {
+  opacity: 0;
+  transform: translateY(50px); /* 슬라이드 인 효과 */
+  transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
+}
 
+/* 화면에 보일 때 페이드 인 및 슬라이드 인 효과 */
+.fade-in {
+  opacity: 1;
+  transform: translateY(0); /* 원래 위치로 */
+}
 </style>
