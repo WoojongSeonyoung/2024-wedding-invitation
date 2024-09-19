@@ -10,7 +10,7 @@
           :max-date="minMaxDate"
           :min-time="minMaxTime"
           :max-time="minMaxTime"
-          :year-range="[2020, 2030]"
+          :year-range="[2013, 2024]"
           :disabled-dates="disabledDates"
           :on-year-change="resetDate"
           :on-month-change="resetDate"

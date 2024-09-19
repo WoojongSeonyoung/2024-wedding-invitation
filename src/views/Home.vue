@@ -18,9 +18,6 @@
       <AccountList/>
       <Divider/>
       <SubTitle message="방명록"/>
-      <GuestBook/>
-      <Divider/>
-      <SubTitle message="채팅방"/>
       <ChatRoom/>
     </section>
     <Footer/>
@@ -38,7 +35,6 @@ import Gallery from '@/components/Gallery.vue';
 import FirstView from "@/components/FirstView.vue";
 import SecondView from "@/components/SecondView.vue";
 import AccountList from "@/components/AccountList.vue";
-import GuestBook from "@/components/GuestBook.vue";
 import ChatRoom from "@/components/ChatRoom.vue";
 
 const cards = [

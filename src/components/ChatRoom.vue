@@ -134,7 +134,6 @@ const sendMessage = () => {
     text: newMessage.value,
     timestamp: Date.now(),
   };
-  console.log(messageData);
 
   push(messagesRef, messageData)
       .then(() => {
