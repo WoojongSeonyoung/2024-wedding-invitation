@@ -5,11 +5,15 @@
           v-for="(message) in messages"
           :key="message.id"
           class="message transition-opacity duration-300 ease-in-out"
+          @mousedown="handleLongPressStart(message)"
+          @mouseup="handleLongPressEnd"
+          @touchstart="handleLongPressStart(message)"
+          @touchend="handleLongPressEnd"
       >
         <div
             :class="[
                     'flex',
-                    message.username === username
+                    message.userId === userId
                       ? 'justify-end'
                       : 'justify-start'
                   ]"
@@ -17,7 +21,7 @@
           <div
               :class="[
                         'max-w-xs mx-2 rounded-lg p-2',
-                        message.username === username
+                        message.userId === userId
                           ? 'bg-blue-300 text-white'
                           : 'bg-rose-300 text-white'
                       ]"
@@ -28,6 +32,17 @@
               <span>{{ message.text }}</span>
             </p>
           </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 삭제 확인 모달 -->
+    <div v-if="showDeleteConfirm" class="modal">
+      <div class="modal-content">
+        <p class="text-lg font-semibold">메시지를 삭제하시겠습니까?</p>
+        <div class="space-x-4">
+        <button @click="confirmDelete">삭제</button>
+        <button @click="cancelDelete">취소</button>
         </div>
       </div>
     </div>
@@ -98,14 +113,33 @@ import {
   query,
   orderByChild,
   limitToLast,
+  remove
 } from 'firebase/database';
 
+// UUID 생성 함수
+const generateUUID = () => {
+  if (typeof crypto !== 'undefined' && crypto.randomUUID) {
+    return crypto.randomUUID();
+  } else {
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+      const r = (Math.random() * 16) | 0,
+        v = c === 'x' ? r : (r & 0x3) | 0x8;
+      return v.toString(16);
+    });
+  }
+}
+
+let longPressTimeout = null;
 const messages = ref([]);
 const newMessage = ref('');
+const showDeleteConfirm = ref(false);
+const messageToDelete = ref(null);
 
 const usernameInput = ref('');
 const username = ref('');
 const isUsernameSet = ref(false);
+
+const userId = ref('');
 
 const messagesRef = dbRef(db, 'messages');
 const messagesQuery = query(messagesRef, orderByChild('timestamp'), limitToLast(200));
@@ -130,6 +164,7 @@ const sendMessage = () => {
   if (newMessage.value.length === 0) return;
 
   const messageData = {
+    userId: userId.value,
     username: username.value,
     text: newMessage.value,
     timestamp: Date.now(),
@@ -148,6 +183,55 @@ const sendMessage = () => {
       });
 };
 
+// 메시지 꾹 누르기 시작
+const handleLongPressStart = (message) => {
+  longPressTimeout = setTimeout(() => {
+    if (message.userId === userId.value) {
+      messageToDelete.value = message;
+      showDeleteConfirm.value = true;
+    }
+  }, 1000); // 1초 동안 눌렀을 때 실행
+};
+
+// 메시지 꾹 누르기 해제
+const handleLongPressEnd = () => {
+  if (longPressTimeout) {
+    clearTimeout(longPressTimeout);
+    longPressTimeout = null;
+  }
+};
+
+// 삭제 확인
+const confirmDelete = () => {
+  if (messageToDelete.value) {
+    deleteMessage(messageToDelete.value);
+    showDeleteConfirm.value = false;
+    messageToDelete.value = null;
+  }
+};
+
+// 삭제 취소
+const cancelDelete = () => {
+  showDeleteConfirm.value = false;
+  messageToDelete.value = null;
+};
+
+const deleteMessage = (message) => {
+  // Firebase Realtime Database에서 메시지 삭제
+  const messageRef = dbRef(db, `messages/${message.id}`);
+  remove(messageRef)
+    .then(() => {
+      // 로컬 메시지 리스트에서 삭제
+      const index = messages.value.findIndex(msg => msg.id === message.id);
+      if (index !== -1) {
+        messages.value.splice(index, 1);
+      }
+    })
+    .catch((error) => {
+      console.error('메시지 삭제 오류:', error);
+    });
+};
+
 watch(messages, () => {
   scrollToBottom();
 });
@@ -155,6 +239,13 @@ watch(messages, () => {
 let unsubscribe;
 // 새로운 메시지 수신
 onMounted(() => {
+  let storedUserId = localStorage.getItem('userId');
+  if (!storedUserId) {
+    storedUserId = generateUUID();
+    localStorage.setItem('userId', storedUserId);
+  }
+  userId.value = storedUserId;
+
   const storedUsername = localStorage.getItem('username');
   if (storedUsername) {
     username.value = storedUsername;
@@ -225,7 +316,7 @@ const focusUsernameInput = () => {
 }
 
 .messages {
-  @apply overflow-y-auto p-2 space-y-4;
+  @apply flex-1 overflow-y-auto p-2 space-y-4;
 }
 
 .messages::-webkit-scrollbar {
@@ -265,5 +356,21 @@ const focusUsernameInput = () => {
 .username-input button,
 .input-area button {
   @apply ml-2 px-4 py-2 text-white rounded-lg hover:bg-opacity-80 disabled:opacity-50 flex-shrink-0;
+}
+
+.modal {
+  @apply fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50;
+}
+
+.modal-content {
+  @apply bg-white p-6 rounded-lg shadow-lg text-center space-y-4;
+}
+
+.modal-content button:first-of-type {
+  @apply px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-700;
+}
+
+.modal-content button:last-of-type {
+  @apply px-4 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-700;
 }
 </style>
