@@ -8,10 +8,14 @@ import router from '@/router';
 import VueDatePicker from '@vuepic/vue-datepicker';
 import '@vuepic/vue-datepicker/dist/main.css';
 
-// vue-toast-notification 임포트
 import VueToast from 'vue-toast-notification';
-// 테마 CSS 파일 임포트 (원하는 테마로 변경 가능)
 import 'vue-toast-notification/dist/theme-sugar.css';
+
+import firebaseApp from '@/config/firebase.js';
+import { getAnalytics, logEvent } from "firebase/analytics";
+
+const analytics = getAnalytics(firebaseApp);
+logEvent(analytics, 'notification_received');
 
 useKakao(import.meta.env.VITE_KAKAO_API_KEY);
 
