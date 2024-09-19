@@ -1,6 +1,6 @@
 <template>
   <section class="image-wrapper">
-    <img src="https://placehold.co/930x1350" alt="mainImage" class="image-container"/>
+    <img src="https://firebasestorage.googleapis.com/v0/b/wedding-invitation-f505f.appspot.com/o/image%2FfirstPhoto.avif?alt=media&token=10a8a5c4-8fcb-46c1-89ec-f39d895d3dbf" alt="mainImage" class="image-container"/>
   </section>
   <section class="mt-4 text-center text-black">
     <p>
