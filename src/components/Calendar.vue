@@ -4,7 +4,7 @@
       <p>2024.11.16</p>
       <p>토요일 오전 11시</p>
       <VueDatePicker
-          class="mx-auto max-w-full"
+          class="mx-auto max-w-full flex-col"
           v-model="date"
           :min-date="minMaxDate"
           :max-date="minMaxDate"
