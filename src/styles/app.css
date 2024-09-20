@@ -3,6 +3,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Noto+Serif+KR:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kumar+One&display=swap');
 
 * {
     font-family: 'Poppins', sans-serif;
@@ -31,6 +32,12 @@
 
 .gowun-dodum-regular {
     font-family: "Gowun Dodum", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.kumar-one-regular {
+    font-family: "Kumar One", serif;
     font-weight: 400;
     font-style: normal;
 }

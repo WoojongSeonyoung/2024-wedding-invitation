@@ -1,7 +1,7 @@
 <template>
   <button
       @click="toggleMusic"
-      class="fixed top-2 right-2 p-4 rounded-full"
+      class="fixed top-0 right-0 p-4 rounded-full"
       :aria-label="isPlaying ? '음악 멈추기' : '음악 재생하기'"
   >
     <MusicalNoteIcon
