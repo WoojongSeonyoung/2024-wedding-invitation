@@ -1,7 +1,6 @@
 <template>
   <div class="outer">
     <main class="app relative">
-<!--      <CinemaNoise />-->
       <SnowFlakes icon="favorite" />
       <router-view></router-view>
       <AudioButton />
@@ -12,7 +11,6 @@
 <script setup>
 import AudioButton from '@/components/AudioButton.vue';
 import SnowFlakes from '@/components/SnowFlakes.vue';
-import CinemaNoise from '@/components/CinemaNoise.vue';
 
 </script>
 
