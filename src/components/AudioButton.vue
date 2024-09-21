@@ -35,7 +35,7 @@ const toggleMusic = () => {
 };
 
 const initMusic = () => {
-  audioPlayer.value = new Audio('https://firebasestorage.googleapis.com/v0/b/wedding-invitation-f505f.appspot.com/o/audio%2FMabel\'s%20Waltz.mp3?alt=media&token=aa68a7f4-bdad-403a-bd81-410db536b4f7');
+  audioPlayer.value = new Audio('https://firebasestorage.googleapis.com/v0/b/wedding-invitation-f505f.appspot.com/o/audio%2F(AR)%20%E1%84%87%E1%85%A7%E1%86%AB%E1%84%8C%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A5%E1%86%B8%20STUDIO%20X%20U%20-%20%E1%84%8B%E1%85%AA%E1%86%AB%E1%84%87%E1%85%A7%E1%86%A8%20%E1%84%80%E1%85%B3%20%E1%84%8C%E1%85%A1%E1%84%8E%E1%85%A6%20(Feat.%20%E1%84%8B%E1%85%B5%E1%84%8E%E1%85%A2%E1%84%87%E1%85%B5%E1%86%AB).mp3?alt=media&token=f97dd339-9ca9-40a4-8d6c-3dcc898ca409');
   audioPlayer.value.loop = true;
   audioPlayer.value.volume = 1;
   audioPlayer.value.play()
