@@ -19,8 +19,10 @@
       <SubTitle class="animate-section" message="마음 전하실 곳"/>
       <AccountList class="animate-section"/>
       <Divider/>
-      <SubTitle class="animate-section" message="방명록"/>
       <ChatRoom class="animate-section"/>
+      <Divider/>
+      <SubTitle class="animate-section" message="연락하기"/>
+      <CallAndSms class="animate-section"/>
     </section>
     <Footer/>
   </main>
@@ -38,6 +40,7 @@ import FirstView from "@/components/FirstView.vue";
 import SecondView from "@/components/SecondView.vue";
 import AccountList from "@/components/AccountList.vue";
 import ChatRoom from "@/components/ChatRoom.vue";
+import CallAndSms from "@/components/CallAndSms.vue";
 import { onMounted, ref } from 'vue';
 
 const cards = [
