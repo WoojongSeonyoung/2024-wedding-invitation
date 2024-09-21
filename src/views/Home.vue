@@ -6,7 +6,7 @@
     <section class="p-6">
       <Divider class="animate-section"/>
       <SubTitle class="animate-section" message="갤러리"/>
-      <Gallery class="animate-section"/>
+      <Gallery/>
       <Divider class="animate-section"/>
       <Calendar class="animate-section"/>
       <Divider class="animate-section"/>

@@ -27,7 +27,7 @@
     </p>
   </section>
   <section class="image-wrapper">
-    <img src="https://placehold.co/600x300" alt="mainImage" class="image-container"/>
+    <img src="https://firebasestorage.googleapis.com/v0/b/wedding-invitation-f505f.appspot.com/o/image%2FKSG00891-2.avif?alt=media&token=cee26fbd-71a6-4ed5-aa69-569eda34cbcd" alt="mainImage" class="image-container"/>
   </section>
   <section class="text-center text-black">
     <p>

@@ -1,5 +1,4 @@
 <template>
-  <section>
     <div class="gallery-container grid grid-cols-3 gap-3">
       <div v-for="(image, index) in images" :key="index" :class="image.wrapperClass">
         <div :class="image.sizeClass">
@@ -46,7 +45,6 @@
         </button>
       </div>
     </div>
-  </section>
 </template>
 
 <script setup>
@@ -54,48 +52,21 @@ import { nextTick, ref } from 'vue';
 import SnowFlakes from '@/components/SnowFlakes.vue';
 
 const images = [
-  {
-    src: 'https://placehold.co/600x400',
-    alt: 'Gallery Image 1',
-    wrapperClass: 'horizontal-wrapper',
-    sizeClass: 'image-wrapper-100',
-  },
-  {
-    src: 'https://placehold.co/400x600',
-    alt: 'Gallery Image 2',
-    wrapperClass: 'vertical-wrapper',
-    sizeClass: 'image-wrapper-50',
-  },
-  {
-    src: 'https://placehold.co/600x400',
-    alt: 'Gallery Image 3',
-    wrapperClass: 'horizontal-wrapper',
-    sizeClass: 'image-wrapper-100',
-  },
-  {
-    src: 'https://placehold.co/600x400',
-    alt: 'Gallery Image 4',
-    wrapperClass: 'horizontal-wrapper',
-    sizeClass: 'image-wrapper-100',
-  },
-  {
-    src: 'https://placehold.co/600x400',
-    alt: 'Gallery Image 5',
-    wrapperClass: 'horizontal-wrapper',
-    sizeClass: 'image-wrapper-100',
-  },
-  {
-    src: 'https://placehold.co/400x600',
-    alt: 'Gallery Image 6',
-    wrapperClass: 'vertical-wrapper',
-    sizeClass: 'image-wrapper-50',
-  },
-  {
-    src: 'https://placehold.co/600x400',
-    alt: 'Gallery Image 7',
-    wrapperClass: 'horizontal-wrapper',
-    sizeClass: 'image-wrapper-100',
-  },
+  {src: 'https://firebasestorage.googleapis.com/v0/b/wedding-invitation-f505f.appspot.com/o/image%2FKSG00928-2.avif?alt=media&token=820da23e-1ccc-4573-bf23-b1dc1fa5e289', alt: 'Gallery Image 1', wrapperClass: 'horizontal-wrapper', sizeClass: 'image-wrapper-100',},
+  {src: 'https://firebasestorage.googleapis.com/v0/b/wedding-invitation-f505f.appspot.com/o/image%2FKSG00853-1.avif?alt=media&token=2c51ccb9-5b14-462f-825a-6f523c891ac5', alt: 'Gallery Image 2', wrapperClass: 'vertical-wrapper', sizeClass: 'image-wrapper-50',},
+  {src: 'https://firebasestorage.googleapis.com/v0/b/wedding-invitation-f505f.appspot.com/o/image%2FKSG00394-2.avif?alt=media&token=c7b4b5f8-c96e-443b-a86e-c993ba7de3f3', alt: 'Gallery Image 3', wrapperClass: 'horizontal-wrapper', sizeClass: 'image-wrapper-100',},
+  {src: 'https://firebasestorage.googleapis.com/v0/b/wedding-invitation-f505f.appspot.com/o/image%2FKSG00153-2.avif?alt=media&token=e599d708-5165-44d8-bb4f-4d864349148e', alt: 'Gallery Image 4', wrapperClass: 'horizontal-wrapper', sizeClass: 'image-wrapper-100',},
+  {src: 'https://firebasestorage.googleapis.com/v0/b/wedding-invitation-f505f.appspot.com/o/image%2FKSG00536-2.avif?alt=media&token=449165a3-211e-4a16-b76d-bfe5db29336b', alt: 'Gallery Image 5', wrapperClass: 'horizontal-wrapper', sizeClass: 'image-wrapper-100',},
+  {src: 'https://firebasestorage.googleapis.com/v0/b/wedding-invitation-f505f.appspot.com/o/image%2FKSG00559-2.avif?alt=media&token=dcfc8010-a305-432c-8adc-995acc382f80', alt: 'Gallery Image 6', wrapperClass: 'vertical-wrapper', sizeClass: 'image-wrapper-50',},
+  {src: 'https://firebasestorage.googleapis.com/v0/b/wedding-invitation-f505f.appspot.com/o/image%2FKSG00964-1.avif?alt=media&token=96543477-5dc7-4a7e-906c-eb2deb5b0bd2', alt: 'Gallery Image 7', wrapperClass: 'horizontal-wrapper', sizeClass: 'image-wrapper-100',},
+  {src: 'https://firebasestorage.googleapis.com/v0/b/wedding-invitation-f505f.appspot.com/o/image%2FKSG01081-2.avif?alt=media&token=c5f8c3e9-ef2f-409c-807d-a5bbe8e47927', alt: 'Gallery Image 8', wrapperClass: 'horizontal-wrapper', sizeClass: 'image-wrapper-100',},
+  {src: 'https://firebasestorage.googleapis.com/v0/b/wedding-invitation-f505f.appspot.com/o/image%2FKSG01099-2.avif?alt=media&token=8ea9a882-77ca-49ae-a5b3-9b0924262e4d', alt: 'Gallery Image 9', wrapperClass: 'horizontal-wrapper', sizeClass: 'image-wrapper-100',},
+  {src: 'https://firebasestorage.googleapis.com/v0/b/wedding-invitation-f505f.appspot.com/o/image%2FKSG01185-2.avif?alt=media&token=67a00ca5-7f07-45d8-b6ce-620e14a84ec8', alt: 'Gallery Image 10', wrapperClass: 'horizontal-wrapper', sizeClass: 'image-wrapper-100',},
+  {src: 'https://firebasestorage.googleapis.com/v0/b/wedding-invitation-f505f.appspot.com/o/image%2FKakaoTalk_20240909_214532445_01-2.avif?alt=media&token=a788c424-420f-414e-b725-063f97ff8705', alt: 'Gallery Image 11', wrapperClass: 'horizontal-wrapper', sizeClass: 'image-wrapper-100',},
+  {src: 'https://firebasestorage.googleapis.com/v0/b/wedding-invitation-f505f.appspot.com/o/image%2FKSG01293-2.avif?alt=media&token=2c9482f3-3b38-4a54-b12b-6b7a3904e1cf', alt: 'Gallery Image 12', wrapperClass: 'vertical-wrapper', sizeClass: 'image-wrapper-50',},
+  {src: 'https://firebasestorage.googleapis.com/v0/b/wedding-invitation-f505f.appspot.com/o/image%2FKSG01251-1.avif?alt=media&token=a3932eab-debd-4e9a-8710-c80cf0b913be', alt: 'Gallery Image 13', wrapperClass: 'horizontal-wrapper', sizeClass: 'image-wrapper-100',},
+  {src: 'https://firebasestorage.googleapis.com/v0/b/wedding-invitation-f505f.appspot.com/o/image%2FKSG01525-2.avif?alt=media&token=61aaf2e1-3e54-48fe-ba13-338cc2dfe3a6', alt: 'Gallery Image 14', wrapperClass: 'horizontal-wrapper', sizeClass: 'image-wrapper-100',},
+  {src: 'https://firebasestorage.googleapis.com/v0/b/wedding-invitation-f505f.appspot.com/o/image%2FKSG01501-1.avif?alt=media&token=4b7ae7f5-d34f-438b-94f5-64f9e448dff7', alt: 'Gallery Image 15', wrapperClass: 'horizontal-wrapper', sizeClass: 'image-wrapper-100',},
 ];
 
 const isModalOpen = ref(false);
@@ -163,11 +134,11 @@ const getSrc = (imageSrc) => {
 }
 
 .image-wrapper-50 {
-  @apply relative w-full pt-[50%] overflow-hidden;
+  @apply relative w-full pt-[70%] overflow-hidden;
 }
 
 .image-wrapper-100 {
-  @apply relative w-full pt-[100%] overflow-hidden;
+  @apply relative w-full pt-[145%] overflow-hidden;
 }
 
 .image-container {
@@ -193,6 +164,8 @@ const getSrc = (imageSrc) => {
 .image-item {
   min-width: 100%;
   height: auto;
+  object-fit: contain;
+  max-height: 80vh;
 }
 
 /* dot 스타일 */
