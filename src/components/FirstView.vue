@@ -17,7 +17,7 @@
         @error="onImageError"
     />
   </section>
-  <section class="mt-4 text-center text-lg">
+  <section class="mt-8 text-center text-lg">
     <p class="poor-story-regular text-xl">
       김우종 ❤️ 김선영
     </p>
