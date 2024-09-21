@@ -14,7 +14,7 @@
 </template>
 
 <script setup>
-import {ref} from 'vue';
+import {onMounted, ref} from 'vue';
 import {MusicalNoteIcon} from '@heroicons/vue/24/outline/index.js';
 
 const audioPlayer = ref(null);
@@ -30,16 +30,24 @@ const toggleMusic = () => {
       isPlaying.value = true;
     }
   } else {
-    audioPlayer.value = new Audio('https://firebasestorage.googleapis.com/v0/b/snsapp-ea7c8.appspot.com/o/audio%2Fwedding-music-182505.mp3?alt=media&token=04ad9b25-2bca-426a-b147-252cd5f4fd7c');
-    audioPlayer.value.loop = true;
-    audioPlayer.value.volume = 0.25;
-    audioPlayer.value.play()
-        .then(() => {
-          isPlaying.value = true;
-        })
-        .catch((error) => {
-          console.error('오디오 재생 실패:', error);
-        });
+    initMusic();
   }
 };
+
+const initMusic = () => {
+  audioPlayer.value = new Audio('https://firebasestorage.googleapis.com/v0/b/wedding-invitation-f505f.appspot.com/o/audio%2FMabel\'s%20Waltz.mp3?alt=media&token=aa68a7f4-bdad-403a-bd81-410db536b4f7');
+  audioPlayer.value.loop = true;
+  audioPlayer.value.volume = 1;
+  audioPlayer.value.play()
+      .then(() => {
+        isPlaying.value = true;
+      })
+      .catch((error) => {
+        console.error('오디오 재생 실패:', error);
+      });
+}
+
+onMounted(() => {
+  initMusic();
+});
 </script>
