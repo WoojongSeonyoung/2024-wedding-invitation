@@ -1,6 +1,6 @@
 <template>
   <section class="mt-4 mb-2 text-center">
-    <p class="kumar-one-regular text-xl text-emerald-950">
+    <p class="kumar-one-regular text-2xl text-emerald-950">
       2024.11.16
     </p>
   </section>
