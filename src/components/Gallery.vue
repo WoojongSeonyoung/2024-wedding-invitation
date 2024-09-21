@@ -78,6 +78,7 @@ const modalWidth = ref(0);
 const openModal = (index) => {
   selectedImageIndex.value = index;
   isModalOpen.value = true;
+  document.body.style.overflow = 'hidden';
   nextTick(() => {
     updateModalWidth();
     window.addEventListener('resize', updateModalWidth);
@@ -86,6 +87,7 @@ const openModal = (index) => {
 
 const closeModal = () => {
   isModalOpen.value = false;
+  document.body.style.overflow = '';
   window.removeEventListener('resize', updateModalWidth);
 };
 
