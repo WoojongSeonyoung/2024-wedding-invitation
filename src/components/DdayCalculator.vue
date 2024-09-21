@@ -6,7 +6,7 @@
 </template>
 
 <script setup>
-import {ref, onMounted, reactive, watch} from 'vue';
+import {onMounted, reactive, ref, watch} from 'vue';
 import gsap from 'gsap';
 
 let props = defineProps({

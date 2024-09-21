@@ -2,21 +2,23 @@
   <main>
     <FirstView/>
     <Divider/>
+    <SubTitle message="☘️"/>
+    <SubTitle message="소중한 분들을 초대합니다"/>
     <SecondView/>
     <section class="p-6">
       <Divider class="animate-section"/>
       <SubTitle class="animate-section" message="갤러리"/>
       <Gallery/>
-      <Divider class="animate-section"/>
+      <Divider/>
       <Calendar class="animate-section"/>
-      <Divider class="animate-section"/>
+      <Divider/>
       <SubTitle class="animate-section" message="오시는 길"/>
       <KakaoMap class="animate-section"/>
       <QuoteCard v-for="card in cards" :title="card.title" :content="card.content" class="animate-section"/>
-      <Divider class="animate-section"/>
+      <Divider/>
       <SubTitle class="animate-section" message="마음 전하실 곳"/>
       <AccountList class="animate-section"/>
-      <Divider class="animate-section"/>
+      <Divider/>
       <SubTitle class="animate-section" message="방명록"/>
       <ChatRoom class="animate-section"/>
     </section>
@@ -41,18 +43,14 @@ import { onMounted, ref } from 'vue';
 const cards = [
   {
     title: '주소',
-    content: `충청북도 충주시 봉현로 296 (교현동 413-1)
+    content: `충청북도 충주시 봉현로 296(교현동 413-1)
               TEL. 043-854-7777`,
   },
   {
-    title: '버스',
-    content: `충주공용버스터미널 앞 택시승강장에서 승차`,
-  },
-  {
-    title: '대절버스',
+    title: '대절버스(김천)',
     content: `출발시각 : 2024년 11월 16일 오전
-              장소 : 김천
-              문의 : 신랑 父 김명인丨010- `,
+              장소 : 김천문화예술회관 뒤편 주차장
+              문의 : 신랑 父 김명인丨010-3826-2605`,
   },
   {
     title: '주차',

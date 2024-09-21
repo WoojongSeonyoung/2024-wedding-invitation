@@ -17,15 +17,15 @@
         @error="onImageError"
     />
   </section>
-  <section class="mt-4 text-center text-black">
-    <p>
+  <section class="mt-4 text-center text-lg">
+    <p class="poor-story-regular text-xl">
       김우종 ❤️ 김선영
     </p>
     <br/>
-    <p>
+    <p class="poor-story-regular">
       2024년 11월 16일 토요일 오전 11시
     </p>
-    <p>
+    <p class="poor-story-regular">
       충주컨벤션센터 웨딩홀 5층 그랜드볼룸홀
     </p>
   </section>

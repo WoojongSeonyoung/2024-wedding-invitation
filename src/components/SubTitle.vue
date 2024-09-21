@@ -1,6 +1,6 @@
 <template>
   <section class="text-center my-4">
-    <p class="text-xl text-black noto-serif-kr-large">
+    <p class="text-xl text-emerald-950">
       {{ message }}
     </p>
   </section>

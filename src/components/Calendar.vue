@@ -1,8 +1,9 @@
 <template>
   <div class="w-full flex justify-center">
     <section class="datepicker-container">
-      <p>2024.11.16</p>
-      <p>토요일 오전 11시</p>
+      <br/>
+      <p>2024.11.16 토요일 오전 11시</p>
+      <br/>
       <VueDatePicker
           class="mx-auto max-w-full flex-col"
           v-model="date"
@@ -31,6 +32,7 @@
           <img class="slot-icon" src="@/assets/icon/favorite.svg" alt="favorite"/>
         </template>
       </VueDatePicker>
+      <br/>
       <p>우리가 처음 만난 지
         <DdayCalculator date="2013-06-02"/>
         일
@@ -39,6 +41,7 @@
         <DdayCalculator date="2024-11-16"/>
         일 남았습니다.
       </p>
+      <br/>
     </section>
   </div>
 </template>

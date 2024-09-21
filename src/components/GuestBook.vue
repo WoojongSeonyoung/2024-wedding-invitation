@@ -10,7 +10,7 @@
 <script setup>
 import db from "@/api/dataService.js";
 import {ref} from 'vue';
-import {ref as dbRef, onValue, push, set} from 'firebase/database';
+import {onValue, push, ref as dbRef, set} from 'firebase/database';
 import QuoteCard from "@/components/QuoteCard.vue";
 
 const comments = ref([]);

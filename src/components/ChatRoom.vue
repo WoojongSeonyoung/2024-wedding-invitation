@@ -41,8 +41,8 @@
       <div class="modal-content">
         <p class="text-lg font-semibold">메시지를 삭제하시겠습니까?</p>
         <div class="space-x-4">
-        <button @click="confirmDelete">삭제</button>
-        <button @click="cancelDelete">취소</button>
+          <button @click="confirmDelete">삭제</button>
+          <button @click="cancelDelete">취소</button>
         </div>
       </div>
     </div>
@@ -104,26 +104,18 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted, watch, nextTick, computed } from 'vue';
+import {computed, nextTick, onMounted, onUnmounted, ref, watch} from 'vue';
 import db from "@/api/dataService.js";
-import {
-  ref as dbRef,
-  onChildAdded,
-  push,
-  query,
-  orderByChild,
-  limitToLast,
-  remove
-} from 'firebase/database';
+import {limitToLast, onChildAdded, orderByChild, push, query, ref as dbRef, remove} from 'firebase/database';
 
 // UUID 생성 함수
 const generateUUID = () => {
   if (typeof crypto !== 'undefined' && crypto.randomUUID) {
     return crypto.randomUUID();
   } else {
-    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
       const r = (Math.random() * 16) | 0,
-        v = c === 'x' ? r : (r & 0x3) | 0x8;
+          v = c === 'x' ? r : (r & 0x3) | 0x8;
       return v.toString(16);
     });
   }
@@ -228,16 +220,16 @@ const deleteMessage = (message) => {
   // Firebase Realtime Database에서 메시지 삭제
   const messageRef = dbRef(db, `messages/${message.id}`);
   remove(messageRef)
-    .then(() => {
-      // 로컬 메시지 리스트에서 삭제
-      const index = messages.value.findIndex(msg => msg.id === message.id);
-      if (index !== -1) {
-        messages.value.splice(index, 1);
-      }
-    })
-    .catch((error) => {
-      console.error('메시지 삭제 오류:', error);
-    });
+      .then(() => {
+        // 로컬 메시지 리스트에서 삭제
+        const index = messages.value.findIndex(msg => msg.id === message.id);
+        if (index !== -1) {
+          messages.value.splice(index, 1);
+        }
+      })
+      .catch((error) => {
+        console.error('메시지 삭제 오류:', error);
+      });
 };
 
 watch(messages, () => {

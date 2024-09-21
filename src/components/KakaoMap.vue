@@ -1,5 +1,5 @@
 <template>
-  <main class="map">
+  <main class="map mt-4">
     <section>
       <KakaoMap
           width="auto"
@@ -20,7 +20,7 @@
         </KakaoMapMarker>
       </KakaoMap>
     </section>
-    <section class="flex justify-center space-x-6 mt-6">
+    <section class="flex justify-center space-x-6 mt-6 mb-6">
       <div v-for="map in mapLinks" :key="map.fileName" class="iconTextWrapper">
         <img :src="getSrc(map.fileName)" @click="openUrl(map.url)" class="appIcon" :alt="map.fileName"/>
         <p class="appText">{{ map.koName }}</p>
