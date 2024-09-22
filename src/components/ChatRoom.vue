@@ -20,7 +20,7 @@
         >
           <div
               :class="[
-                        'max-w-xs mx-2 rounded-lg p-2',
+                        'max-w-xs mx-2 rounded-lg p-2 shadow-md',
                         message.userId === userId
                           ? 'bg-blue-300 text-white'
                           : 'bg-rose-300 text-white'

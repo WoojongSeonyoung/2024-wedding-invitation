@@ -24,6 +24,9 @@
       <Divider/>
       <SubTitle class="animate-section" message="방명록"/>
       <ChatRoom class="animate-section"/>
+      <Divider/>
+      <SubTitle class="animate-section" message="공유하기"/>
+      <ShareLink class="animate-section"/>
     </section>
     <Footer/>
   </main>
@@ -42,6 +45,7 @@ import SecondView from "@/components/SecondView.vue";
 import AccountList from "@/components/AccountList.vue";
 import ChatRoom from "@/components/ChatRoom.vue";
 import CallAndSms from "@/components/CallAndSms.vue";
+import ShareLink from "@/components/ShareLink.vue";
 import { onMounted, ref } from 'vue';
 
 const cards = [
