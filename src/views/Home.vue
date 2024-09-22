@@ -19,10 +19,11 @@
       <SubTitle class="animate-section" message="마음 전하실 곳"/>
       <AccountList class="animate-section"/>
       <Divider/>
-      <ChatRoom class="animate-section"/>
-      <Divider/>
       <SubTitle class="animate-section" message="연락하기"/>
       <CallAndSms class="animate-section"/>
+      <Divider/>
+      <SubTitle class="animate-section" message="방명록"/>
+      <ChatRoom class="animate-section"/>
     </section>
     <Footer/>
   </main>
@@ -50,8 +51,8 @@ const cards = [
               TEL. 043-854-7777`,
   },
   {
-    title: '대절버스(김천)',
-    content: `출발시각 : 2024년 11월 16일 오전
+    title: '전세버스(김천)',
+    content: `출발시각 : 2024년 11월 16일 오전 7시 30분
               장소 : 김천문화예술회관 뒤편 주차장
               문의 : 신랑 父 김명인丨010-3826-2605`,
   },
