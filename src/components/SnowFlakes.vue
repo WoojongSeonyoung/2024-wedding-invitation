@@ -156,7 +156,7 @@ const getSrc = (fileName) => images[`../assets/icon/${fileName}.svg`]?.default |
     transform: translateY(-100px) rotate(0deg);
   }
   100% {
-    transform: translateY(600vh) rotate(720deg);
+    transform: translateY(1000vh) rotate(720deg);
   }
 }
 
