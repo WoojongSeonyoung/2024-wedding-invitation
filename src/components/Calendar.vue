@@ -85,7 +85,7 @@ onMounted(() => {
 
 <style scoped lang="postcss">
 .datepicker-container {
-  @apply w-[600px] bg-gray-50 p-4 shadow-lg rounded-lg text-center;
+  @apply w-full bg-gray-50 p-4 shadow-lg rounded-lg text-center;
 }
 
 .slot-icon {
@@ -98,4 +98,12 @@ p {
   @apply text-lg
 }
 
+</style>
+
+<style>
+:root {
+  .dp--tp-wrap {
+    max-width: 600px;
+  }
+}
 </style>
