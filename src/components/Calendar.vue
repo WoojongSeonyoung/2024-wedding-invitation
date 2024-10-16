@@ -37,12 +37,14 @@
         <DdayCalculator date="2013-06-02"/>
         일
       </p>
-      <p>우종, 선영의 결혼식이
-        <DdayCalculator date="2024-11-16"/>
-        일
+      <p>
+        우종, 선영의 결혼식이
+        <DdayCalculator ref="ddayCalc" date="2024-11-16" />
+        <template v-if="ddayResult !== 'today'">일</template>
       </p>
       <p>
-        남았습니다
+        <template v-if="ddayResult === 'today'">입니다</template>
+        <template v-else>남았습니다</template>
       </p>
       <br/>
     </section>
@@ -54,6 +56,7 @@ import VueDatePicker from '@vuepic/vue-datepicker';
 import '@vuepic/vue-datepicker/dist/main.css';
 import DdayCalculator from '@/components/DdayCalculator.vue';
 import {ko} from 'date-fns/locale';
+import { onMounted, ref, watch } from 'vue';
 
 const minMaxDate = new Date('2024-11-16');
 const minMaxTime = new Date('2024-11-16 11:00:00');
@@ -67,6 +70,17 @@ const resetDate = () => {
   date.setFullYear(minMaxDate.getFullYear());
   date.setMonth(minMaxDate.getMonth());
 };
+
+const ddayCalc = ref(null);
+const ddayResult = ref('');
+
+onMounted(() => {
+  watch(() => ddayCalc.value.result, (newValue) => {
+    if (newValue) {
+      ddayResult.value = newValue;
+    }
+  }, { immediate: true });
+});
 </script>
 
 <style scoped lang="postcss">
