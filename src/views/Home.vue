@@ -11,6 +11,7 @@
       <Gallery/>
       <Divider/>
       <Calendar class="animate-section"/>
+      <VideoView class="animate-section"/>
       <Divider/>
       <SubTitle class="animate-section" message="오시는 길"/>
       <KakaoMap class="animate-section"/>
@@ -47,6 +48,7 @@ import ChatRoom from "@/components/ChatRoom.vue";
 import CallAndSms from "@/components/CallAndSms.vue";
 import ShareLink from "@/components/ShareLink.vue";
 import { onMounted, ref } from 'vue';
+import VideoView from "@/components/VideoView.vue";
 
 const cards = [
   {
@@ -55,15 +57,15 @@ const cards = [
               TEL. 043-854-7777`,
   },
   {
+    title: '주차',
+    content: `본관 주차시설 이용 및 예식장 20m 뒤
+              플래티늄요양원 주차장 이용`,
+  },
+  {
     title: '전세버스(김천)',
     content: `출발시각 : 2024년 11월 16일 오전 7시 30분
               장소 : 김천문화예술회관 뒤편 주차장
               문의 : 신랑 父 김명인丨010-3826-2605`,
-  },
-  {
-    title: '주차',
-    content: `본관 주차시설 이용 및 예식장 20m 뒤
-              플래티늄요양원 주차장 이용`,
   },
 ];
 
