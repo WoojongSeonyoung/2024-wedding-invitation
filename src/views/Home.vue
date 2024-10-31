@@ -11,7 +11,6 @@
       <Gallery/>
       <Divider/>
       <Calendar class="animate-section"/>
-      <VideoView class="animate-section"/>
       <Divider/>
       <SubTitle class="animate-section" message="오시는 길"/>
       <KakaoMap class="animate-section"/>
@@ -48,7 +47,6 @@ import ChatRoom from "@/components/ChatRoom.vue";
 import CallAndSms from "@/components/CallAndSms.vue";
 import ShareLink from "@/components/ShareLink.vue";
 import { onMounted, ref } from 'vue';
-import VideoView from "@/components/VideoView.vue";
 
 const cards = [
   {
