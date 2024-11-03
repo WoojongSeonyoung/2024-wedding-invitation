@@ -9,6 +9,12 @@
 <script setup>
 import { computed, onMounted, reactive, ref, watch } from 'vue';
 import gsap from 'gsap';
+import dayjs from 'dayjs';
+import utc from 'dayjs/plugin/utc';
+import timezone from 'dayjs/plugin/timezone';
+
+dayjs.extend(utc);
+dayjs.extend(timezone);
 
 let props = defineProps({
   date: String,
@@ -21,20 +27,17 @@ const tweened = reactive({
 const isToday = ref(false);
 
 onMounted(() => {
-  // 5초 대기 후 setDday 실행
+  // 3초 대기 후 setDday 실행
   setTimeout(() => {
     setDday();
-  }, 5000); // 5000ms = 5초
+  }, 3000);
 });
 
 const setDday = () => {
-  // 현재 날짜 가져오기
-  const targetDate = new Date(props.date);
-  const today = new Date();
+  const targetDate = dayjs.tz(props.date, 'Asia/Seoul');
+  const today = dayjs.tz(new Date(), 'Asia/Seoul');
 
-  // 날짜 차이 계산 (밀리초 단위 -> 일 단위)
-  const diffTime = targetDate.getTime() - today.getTime();
-  const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); // 밀리초 -> 일 변환
+  const diffDays = targetDate.diff(today, 'day');
 
   // 날짜 차이에 따라 다른 메시지 설정
   if (diffDays > 0) {
