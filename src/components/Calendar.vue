@@ -34,12 +34,12 @@
       </VueDatePicker>
       <br/>
       <p>우리가 처음 만난 지
-        <DdayCalculator date="2013-06-02"/>
+        <DdayCalculator :date="new Date('2023-06-02')"/>
         일
       </p>
       <p>
         우종, 선영의 결혼식이
-        <DdayCalculator ref="ddayCalc" date="2024-11-16" />
+        <DdayCalculator ref="ddayCalc" :date="new Date('2024-11-16')" />
         <template v-if="ddayResult !== 'today'">일</template>
       </p>
       <p>

@@ -16,8 +16,8 @@ import timezone from 'dayjs/plugin/timezone';
 dayjs.extend(utc);
 dayjs.extend(timezone);
 
-let props = defineProps({
-  date: String,
+const props = defineProps({
+  date: Date,
 });
 
 const number = ref(0);
@@ -34,8 +34,8 @@ onMounted(() => {
 });
 
 const setDday = () => {
-  const targetDate = dayjs.tz(props.date, 'Asia/Seoul');
-  const today = dayjs.tz(new Date(), 'Asia/Seoul');
+  const targetDate = dayjs.tz(props.date, 'Asia/Seoul').startOf('day');
+  const today = dayjs.tz(new Date(), 'Asia/Seoul').startOf('day');
 
   const diffDays = targetDate.diff(today, 'day');
 
