@@ -34,7 +34,7 @@
       </VueDatePicker>
       <br/>
       <p>우리가 처음 만난 지
-        <DdayCalculator :date="new Date('2023-06-02')"/>
+        <DdayCalculator :date="new Date('2013-06-02')"/>
         일
       </p>
       <p>
