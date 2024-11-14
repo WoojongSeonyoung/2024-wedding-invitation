@@ -8,5 +8,6 @@
         <img src="@/assets/icon/github-mark.svg" alt="icon" class="inline h-4 w-4">
       </a>
     </p>
+    <br/>
   </footer>
 </template>
