@@ -44,7 +44,7 @@
       </p>
       <p>
         <template v-if="ddayResult === 'today'">입니다</template>
-        <template v-else>남았습니다</template>
+        <template v-else>지났습니다</template>
       </p>
       <br/>
     </section>
